@@ -1283,9 +1283,7 @@
       <!-- PYRAMIDS -->
       <article class="card card-pyramids gsap-hidden" tabindex="0" aria-label="Pyramids" data-project="pyramids">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata">
-            <source src="projects/pyramids/Pyramids/output_progressive_7da1dc68-7e66-4d96-8ba8-28d2913ff9ff.mp4" type="video/mp4" />
-          </video>
+          <img src="https://img.youtube.com/vi/xB8KDw_Xxsg/maxresdefault.jpg" alt="Pyramids motion design" loading="lazy" />
         </div>
         <div class="card-overlay"></div>
         <div class="card-info">
@@ -1301,9 +1299,7 @@
       <!-- WATER DROP STORY -->
       <article class="card card-water gsap-hidden" tabindex="0" aria-label="Water Drop Story" data-project="water">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata">
-            <source src="projects/Water%20Drop%20story/SRK%203D%20animation%20Qtira.mp4" type="video/mp4" />
-          </video>
+          <img src="https://img.youtube.com/vi/FC1x7YesrXw/maxresdefault.jpg" alt="Water Drop 3D animation" loading="lazy" />
         </div>
         <div class="card-overlay"></div>
         <div class="card-info">
@@ -1319,9 +1315,7 @@
       <!-- RED BULL AD -->
       <article class="card card-redbull gsap-hidden" tabindex="0" aria-label="Red Bull AD" data-project="redbull">
         <div class="card-media">
-          <video autoplay muted loop playsinline preload="metadata">
-            <source src="projects/RedBull%20AD/Redbull%20ad.mp4" type="video/mp4" />
-          </video>
+          <img src="https://img.youtube.com/vi/H-6G3ZewMwA/maxresdefault.jpg" alt="Red Bull ad campaign" loading="lazy" />
         </div>
         <div class="card-overlay"></div>
         <div class="card-info">
@@ -1702,21 +1696,21 @@
       title: 'PYRAMIDS',
       meta: 'Motion Design · 3D',
       media: [
-        { type:'video', src:'projects/pyramids/Pyramids/output_progressive_7da1dc68-7e66-4d96-8ba8-28d2913ff9ff.mp4' },
+        { type:'youtube', src:'xB8KDw_Xxsg' },
       ]
     },
     water: {
       title: 'WATER DROP',
       meta: 'Motion Design · 3D',
       media: [
-        { type:'video', src:'projects/Water%20Drop%20story/SRK%203D%20animation%20Qtira.mp4' },
+        { type:'youtube', src:'FC1x7YesrXw' },
       ]
     },
     redbull: {
       title: 'RED BULL AD',
       meta: 'Motion Design · Ad Campaign',
       media: [
-        { type:'video', src:'projects/RedBull%20AD/Redbull%20ad.mp4' },
+        { type:'youtube', src:'H-6G3ZewMwA' },
       ]
     },
   };
@@ -1746,7 +1740,12 @@
     lbThumbs.innerHTML = '';
     currentProject.media.forEach((item, i) => {
       let el;
-      if (item.type === 'video') {
+      if (item.type === 'youtube') {
+        el = document.createElement('div');
+        el.className = 'lb-thumb-vid' + (i === 0 ? ' active' : '');
+        el.style.backgroundImage = 'url(https://img.youtube.com/vi/' + item.src + '/mqdefault.jpg)';
+        el.classList.add('has-frame');
+      } else if (item.type === 'video') {
         el = document.createElement('div');
         el.className = 'lb-thumb-vid' + (i === 0 ? ' active' : '');
         // attempt canvas frame capture
@@ -1799,9 +1798,11 @@
   function closeProject() {
     lb.classList.remove('open');
     document.body.style.overflow = '';
-    // pause any video
+    // pause any video or stop youtube iframe
     const vid = lbWrap.querySelector('video');
     if (vid) vid.pause();
+    const iframe = lbWrap.querySelector('iframe');
+    if (iframe) iframe.src = '';
   }
 
   function showMedia(index) {
@@ -1814,7 +1815,14 @@
     if (oldVid) oldVid.pause();
 
     lbWrap.innerHTML = '';
-    if (item.type === 'video') {
+    if (item.type === 'youtube') {
+      const f = document.createElement('iframe');
+      f.src = 'https://www.youtube.com/embed/' + item.src + '?autoplay=1&rel=0';
+      f.allow = 'autoplay; fullscreen';
+      f.allowFullscreen = true;
+      f.style.cssText = 'width:100%;aspect-ratio:16/9;max-height:100%;border:none;border-radius:8px;';
+      lbWrap.appendChild(f);
+    } else if (item.type === 'video') {
       const v = document.createElement('video');
       v.src = item.src; v.controls = true; v.autoplay = true;
       v.style.cssText = 'max-width:100%;max-height:100%;outline:none;';
