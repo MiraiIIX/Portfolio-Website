@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iliass Touijri — AI Creative Director</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Iliass Touijri — AI Creative Director based in Morocco. Crafting visual identities, brand campaigns, and motion stories that fuse artificial intelligence with human culture." />
+  <meta name="author" content="Iliass Touijri" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Iliass Touijri — AI Creative Director" />
+  <meta property="og:description" content="Crafting visual identities, brand campaigns, and motion stories that fuse AI with Moroccan culture." />
+  <meta property="og:image"       content="Profile.png" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Iliass Touijri — AI Creative Director" />
+  <meta name="twitter:description" content="Crafting visual identities, brand campaigns, and motion stories that fuse AI with Moroccan culture." />
+  <meta name="twitter:image"       content="Profile.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Profile.png" />
+  <link rel="apple-touch-icon"      href="Profile.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* ─── GRADIENT BUTTON @property ─────────────────────── */
+    @property --gb-px  { syntax: '<percentage>'; initial-value: 11%;   inherits: false; }
+    @property --gb-py  { syntax: '<percentage>'; initial-value: 140%;  inherits: false; }
+    @property --gb-sx  { syntax: '<percentage>'; initial-value: 150%;  inherits: false; }
+    @property --gb-sy  { syntax: '<percentage>'; initial-value: 180%;  inherits: false; }
+    @property --gb-c1  { syntax: '<color>'; initial-value: #050505;    inherits: false; }
+    @property --gb-c2  { syntax: '<color>'; initial-value: #120106;    inherits: false; }
+    @property --gb-c3  { syntax: '<color>'; initial-value: #3d0a10;    inherits: false; }
+    @property --gb-c4  { syntax: '<color>'; initial-value: #7a1320;    inherits: false; }
+    @property --gb-c5  { syntax: '<color>'; initial-value: #a01a28;    inherits: false; }
+    @property --gb-ba  { syntax: '<angle>';      initial-value: 20deg; inherits: false; }
+    @property --gb-bc1 { syntax: '<color>'; initial-value: hsla(350,70%,50%,0.2);  inherits: false; }
+    @property --gb-bc2 { syntax: '<color>'; initial-value: hsla(350,70%,40%,0.75); inherits: false; }
+    @property --gb-s1  { syntax: '<percentage>'; initial-value: 37%;   inherits: false; }
+    @property --gb-s2  { syntax: '<percentage>'; initial-value: 61%;   inherits: false; }
+    @property --gb-s3  { syntax: '<percentage>'; initial-value: 78%;   inherits: false; }
+    @property --gb-s4  { syntax: '<percentage>'; initial-value: 89%;   inherits: false; }
+    @property --gb-s5  { syntax: '<percentage>'; initial-value: 100%;  inherits: false; }
+
+    :root {
+      --red:      #ff2d3a;
+      --red-2:    #d91525;
+      --red-glow: rgba(255, 45, 58, 0.28);
+      --red-text-glow: 0 0 18px rgba(255, 45, 58, 0.75), 0 0 40px rgba(255, 45, 58, 0.35);
+      --gold:     #c9a84c;
+      --bg:       #080808;
+      --bg-2:     #0d0d0d;
+      --bg-3:     #131313;
+      --text:     #ede8df;
+      --muted:    #5a5550;
+      --border:   rgba(255,255,255,0.065);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--red-2) var(--bg-2);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── GRAIN ─────────────────────────────────────────── */
+    #grain {
+      position: fixed;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.042;
+      pointer-events: none;
+      z-index: 9000;
+      animation: grain-shift 7s steps(10) infinite;
+    }
+    @keyframes grain-shift {
+      0%   { transform: translate(0,0); }
+      10%  { transform: translate(-4%,-9%); }
+      20%  { transform: translate(-14%,4%); }
+      30%  { transform: translate(6%,-24%); }
+      40%  { transform: translate(-4%,24%); }
+      50%  { transform: translate(-14%,9%); }
+      60%  { transform: translate(14%,0%); }
+      70%  { transform: translate(0%,14%); }
+      80%  { transform: translate(3%,34%); }
+      90%  { transform: translate(-9%,9%); }
+    }
+
+    /* ─── PRELOADER ──────────────────────────────────────── */
+    #preloader {
+      position: fixed; inset: 0;
+      background: var(--bg);
+      z-index: 8000;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 20px;
+    }
+    .pre-word {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 8vw, 96px);
+      letter-spacing: 0.08em;
+      line-height: 1;
+      overflow: hidden;
+    }
+    .pre-word span { display: block; transform: translateY(110%); }
+    .pre-bar {
+      width: 0; height: 1px;
+      background: linear-gradient(to right, transparent, var(--red), transparent);
+      transition: width 1s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 500;
+      padding: 28px 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: padding 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      padding: 16px 52px;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(24px);
+      border-bottom-color: var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 0.18em;
+      color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav-logo .dot { color: var(--red); font-size: 22px; line-height: 1; }
+    .nav-links { display: flex; gap: 44px; list-style: none; }
+    .nav-links a {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      position: relative; transition: color 0.25s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--red);
+      transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 130px 52px 100px;
+      overflow: visible;
+    }
+
+    /* background glows */
+    .bg-glow {
+      position: absolute; border-radius: 50%;
+      pointer-events: none; filter: blur(70px);
+    }
+    .bg-glow-1 {
+      width: 600px; height: 500px;
+      background: radial-gradient(ellipse, rgba(230,57,70,0.17) 0%, transparent 70%);
+      top: -60px; right: 5%; left: auto;
+      animation: orb 14s ease-in-out infinite;
+    }
+    .bg-glow-2 {
+      width: 280px; height: 280px;
+      background: radial-gradient(ellipse, rgba(230,57,70,0.09) 0%, transparent 70%);
+      bottom: 60px; left: 25%;
+      animation: orb 18s ease-in-out infinite reverse;
+    }
+    .bg-glow-3 {
+      width: 180px; height: 180px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);
+      top: 180px; left: 8%;
+      animation: orb 22s ease-in-out infinite;
+    }
+    @keyframes orb {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(28px,-18px) scale(1.06); }
+      66%      { transform: translate(-18px,28px) scale(0.94); }
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 0;
+      align-items: center;
+      max-width: 1380px; width: 100%; margin: 0 auto;
+    }
+
+    /* hero left */
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 30px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 28px; height: 1px; background: var(--red);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(80px, 9.5vw, 148px);
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .hero-title .line {
+      display: block; overflow: visible;
+      padding: 0.05em 0;
+    }
+    .hero-title .line-clip {
+      display: block; overflow: hidden;
+    }
+    .hero-title .line-clip span {
+      display: block; transform: translateY(110%);
+    }
+    .hero-title .accent { color: var(--red); }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 300;
+      font-size: clamp(17px, 1.8vw, 22px);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 440px;
+      margin-bottom: 52px;
+      opacity: 0;
+    }
+
+    /* ─── GRADIENT BUTTON ────────────────────────────────── */
+    .grad-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 16px 38px; border-radius: 11px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: #fff; text-decoration: none;
+      cursor: pointer; position: relative; border: none;
+      background: radial-gradient(
+        var(--gb-sx) var(--gb-sy) at var(--gb-px) var(--gb-py),
+        var(--gb-c1) var(--gb-s1), var(--gb-c2) var(--gb-s2),
+        var(--gb-c3) var(--gb-s3), var(--gb-c4) var(--gb-s4),
+        var(--gb-c5) var(--gb-s5)
+      );
+      transition:
+        --gb-px .5s, --gb-py .5s, --gb-sx .5s, --gb-sy .5s,
+        --gb-c1 .5s, --gb-c2 .5s, --gb-c3 .5s, --gb-c4 .5s, --gb-c5 .5s,
+        --gb-ba .5s, --gb-bc1 .5s, --gb-bc2 .5s,
+        --gb-s1 .5s, --gb-s2 .5s, --gb-s3 .5s, --gb-s4 .5s, --gb-s5 .5s,
+        box-shadow .4s;
+    }
+    .grad-btn::before {
+      content: ''; position: absolute; inset: 0;
+      border-radius: inherit; padding: 1px;
+      background: linear-gradient(var(--gb-ba), var(--gb-bc1), var(--gb-bc2));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      pointer-events: none;
+    }
+    .grad-btn:hover {
+      --gb-px: 0%; --gb-py: 91.51%;
+      --gb-sx: 120%; --gb-sy: 103%;
+      --gb-c1: #ff2d3a; --gb-c2: #cc1020;
+      --gb-c3: #7a0810; --gb-c4: #2a0508; --gb-c5: #010101;
+      --gb-ba: 190deg;
+      --gb-bc1: hsla(350,78%,90%,0.1);
+      --gb-bc2: hsla(350,75%,75%,0.6);
+      --gb-s1: 0%; --gb-s2: 8.8%; --gb-s3: 21%; --gb-s4: 71%; --gb-s5: 85%;
+      box-shadow: 0 0 50px rgba(255,45,58,0.35), 0 0 20px rgba(255,45,58,0.18);
+    }
+    .grad-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+    .grad-btn svg { transition: transform 0.2s ease; flex-shrink: 0; }
+    .grad-btn:hover svg { transform: translateX(5px); }
+
+    /* Keep opacity for GSAP entrance animations */
+    .hero-cta  { opacity: 0; }
+    .contact-link { opacity: 0; }
+    .hero-socials { opacity: 0; }
+    .social-links.hero-socials { margin-top: 88px; }
+
+    /* ─── LINE GLOW (for WORLDS / CREATE) ────────────────── */
+    .line-glow {
+      filter:
+        drop-shadow(0 0 8px rgba(255, 45, 58, 0.55))
+        drop-shadow(0 0 22px rgba(255, 45, 58, 0.28))
+        drop-shadow(0 0 55px rgba(255, 45, 58, 0.13));
+    }
+
+    /* hero right — avatar */
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      position: absolute;
+      right: 52px;
+      top: 32%;
+      transform: translateY(-50%);
+      min-width: 460px;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 380px; height: 380px;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -22px; border-radius: 50%;
+      border: 1px solid rgba(230,57,70,0.28);
+      animation: ring-rotate 22s linear infinite;
+    }
+    .avatar-ring::before {
+      content: '';
+      position: absolute; top: 0; left: 50%;
+      width: 7px; height: 7px;
+      background: var(--red); border-radius: 50%;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 14px var(--red), 0 0 28px rgba(230,57,70,0.5);
+    }
+    .avatar-ring-2 {
+      position: absolute; inset: -50px; border-radius: 50%;
+      border: 1px dashed rgba(230,57,70,0.1);
+      animation: ring-rotate 40s linear infinite reverse;
+    }
+    @keyframes ring-rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .avatar-glow {
+      position: absolute; inset: -70px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(230,57,70,0.18) 0%, transparent 60%);
+      filter: blur(24px);
+      animation: glow-pulse 5s ease-in-out infinite;
+    }
+    @keyframes glow-pulse {
+      0%,100% { opacity: 0.55; transform: scale(1); }
+      50%      { opacity: 1;    transform: scale(1.06); }
+    }
+
+    .avatar-circle {
+      width: 100%; height: 100%;
+      border-radius: 50%; overflow: hidden;
+      position: relative;
+    }
+    .avatar-circle img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 20%;
+    }
+    /* blend white bg into dark bg with radial vignette */
+    .avatar-circle::after {
+      content: ''; position: absolute; inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, transparent 46%, rgba(8,8,8,0.6) 68%, var(--bg) 84%);
+    }
+
+    .hero-badge {
+      position: absolute;
+      background: rgba(13,13,13,0.92);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      border-radius: 3px;
+      padding: 11px 18px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0;
+      z-index: 20;
+    }
+    .badge-1 { top: 20px; right: -10px; }
+    .badge-1 .badge-num { color: var(--red); font-family: 'Bebas Neue'; font-size: 18px; }
+    .badge-2 { bottom: -18px; left: 10px; color: var(--muted); }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 38px; left: 52px;
+      display: flex; flex-direction: column; gap: 10px;
+      align-items: flex-start;
+    }
+    .scroll-hint span {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-mouse {
+      width: 22px; height: 34px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 11px;
+      display: flex; justify-content: center;
+      padding-top: 6px;
+    }
+    .scroll-mouse::before {
+      content: ''; width: 2px; height: 6px;
+      background: var(--red); border-radius: 1px;
+      animation: mouse-scroll 2.2s ease-in-out infinite;
+    }
+    @keyframes mouse-scroll {
+      0%,100% { transform: translateY(0); opacity: 1; }
+      50%      { transform: translateY(7px); opacity: 0.2; }
+    }
+
+    /* ─── TICKER ─────────────────────────────────────────── */
+    .ticker-wrap {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0; overflow: hidden;
+      position: relative;
+    }
+    .ticker-wrap::before,
+    .ticker-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0;
+      width: 80px; z-index: 2; pointer-events: none;
+    }
+    .ticker-wrap::before { left: 0;  background: linear-gradient(to right, var(--bg-2), transparent); }
+    .ticker-wrap::after  { right: 0; background: linear-gradient(to left,  var(--bg-2), transparent); }
+
+    .ticker-track {
+      display: inline-flex; white-space: nowrap;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 0 36px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ticker-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0;
+    }
+
+    /* ─── SECTION COMMON ─────────────────────────────────── */
+    .section-wrap {
+      max-width: 1380px; margin: 0 auto;
+      padding: 120px 52px;
+    }
+
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 14px;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--red);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 6.5vw, 88px);
+      line-height: 0.9; letter-spacing: -0.01em;
+    }
+
+    .decor-line {
+      display: block; width: 100%; height: 1px;
+      background: linear-gradient(to right, transparent 0%, rgba(230,57,70,0.25) 30%, rgba(230,57,70,0.25) 70%, transparent 100%);
+    }
+
+    /* ─── PROJECTS ───────────────────────────────────────── */
+    #projects .section-wrap { padding-bottom: 0; }
+
+    .projects-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .projects-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 18px;
+      color: var(--muted);
+      padding-bottom: 6px;
+    }
+
+    /* bento grid */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 460px 300px 320px;
+      gap: 10px;
+      padding-bottom: 120px;
+    }
+
+    .card {
+      position: relative; overflow: hidden;
+      border-radius: 2px;
+      background: var(--bg-3);
+      cursor: pointer;
+      will-change: transform;
+    }
+
+    /* positions */
+    .card-keselect   { grid-column: 1 / 8;  grid-row: 1; }
+    .card-amazigh    { grid-column: 8 / 13; grid-row: 1; }
+    .card-jerseyland { grid-column: 1 / 4;  grid-row: 2; }
+    .card-sada       { grid-column: 4 / 7;  grid-row: 2; }
+    .card-pyramids   { grid-column: 7 / 10; grid-row: 2; }
+    .card-water      { grid-column: 10 / 13; grid-row: 2; }
+    .card-redbull    { grid-column: 1 / 13; grid-row: 3; }
+
+    /* card media */
+    .card-media {
+      position: absolute; inset: 0;
+    }
+    .card-media img,
+    .card-media video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    .card:hover .card-media img,
+    .card:hover .card-media video {
+      transform: scale(1.06);
+    }
+
+    /* dark gradient overlay */
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8,8,8,0.92) 0%,
+        rgba(8,8,8,0.25) 50%,
+        transparent 100%
+      );
+      transition: background 0.35s ease;
+    }
+    .card:hover .card-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(8,8,8,0.96) 0%,
+        rgba(8,8,8,0.5) 55%,
+        rgba(8,8,8,0.1) 100%
+      );
+    }
+
+    /* red top-edge reveal on hover */
+    .card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+      z-index: 10;
+    }
+    .card:hover::before { transform: scaleX(1); }
+
+    /* card info */
+    .card-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 24px 26px;
+      z-index: 5;
+      transform: translateY(6px);
+      transition: transform 0.3s ease;
+    }
+    .card:hover .card-info { transform: translateY(0); }
+
+    .card-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 9px;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.3s 0.04s ease, transform 0.3s 0.04s ease;
+    }
+    .card:hover .card-tags { opacity: 1; transform: translateY(0); }
+
+    .tag {
+      font-size: 9.5px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 9px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 2px; color: rgba(237,232,223,0.55);
+    }
+
+    .card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(22px, 2.6vw, 34px);
+      letter-spacing: 0.04em; line-height: 1;
+      color: var(--text);
+    }
+
+    .card-desc {
+      font-size: 12.5px; line-height: 1.5;
+      color: rgba(237,232,223,0.45);
+      margin-top: 6px;
+      opacity: 0; transform: translateY(6px);
+      transition: opacity 0.3s 0.08s ease, transform 0.3s 0.08s ease;
+      max-width: 340px;
+    }
+    .card:hover .card-desc { opacity: 1; transform: translateY(0); }
+
+    /* red glow on hover */
+    .card::after {
+      content: ''; position: absolute; inset: 0;
+      box-shadow: inset 0 0 0 1px rgba(230,57,70,0);
+      transition: box-shadow 0.35s ease;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+    .card:hover::after {
+      box-shadow: inset 0 0 0 1px rgba(230,57,70,0.35),
+                  0 0 50px rgba(230,57,70,0.06);
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────── */
+    #about .section-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: start;
+    }
+
+    .about-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-style: italic;
+      font-size: clamp(26px, 3.2vw, 50px);
+      line-height: 1.25; letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .about-quote em {
+      color: var(--red); font-style: normal;
+      text-shadow: 0 0 24px rgba(255, 45, 58, 0.55), 0 0 50px rgba(255, 45, 58, 0.2);
+    }
+
+    .about-rule {
+      width: 48px; height: 1px;
+      background: var(--red);
+      margin-bottom: 30px;
+    }
+
+    .about-body {
+      font-size: 15px; line-height: 1.85;
+      color: var(--muted); max-width: 480px;
+    }
+
+    .skills {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-top: 44px;
+    }
+    .skill {
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      position: relative;
+      transition: border-color 0.3s;
+      padding-bottom: 22px;
+    }
+    .skill:hover { border-color: rgba(230,57,70,0.3); }
+    .skill::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--red); opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .skill:hover::before { opacity: 0.04; }
+    .skill-name {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 3px; position: relative;
+    }
+    .skill-detail {
+      font-size: 11.5px; color: var(--muted);
+      position: relative;
+    }
+
+    /* about right — stats */
+    .about-stats { position: relative; padding-top: 20px; }
+    .stat-bg-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 220px; line-height: 0.8;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+      position: absolute; top: -30px; left: -20px;
+      user-select: none; pointer-events: none;
+      letter-spacing: -0.02em;
+    }
+    .stat-row {
+      padding: 28px 0 28px 40px;
+      border-left: 1px solid var(--border);
+      margin-bottom: 8px;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+    .stat-row:hover { border-left-color: rgba(230,57,70,0.4); }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px; line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .stat-num.red { color: var(--red); text-shadow: var(--red-text-glow); }
+    .stat-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); margin-top: 4px;
+    }
+    .stat-row:last-child { border-left-color: rgba(230,57,70,0.2); }
+
+    /* ─── CONTACT ────────────────────────────────────────── */
+    #contact {
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    #contact .section-wrap { padding: 140px 52px 130px; position: relative; z-index: 1; }
+
+    .contact-bg-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 350px;
+      background: radial-gradient(ellipse, rgba(230,57,70,0.1) 0%, transparent 70%);
+      filter: blur(50px); pointer-events: none;
+    }
+
+    .contact-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 28px;
+    }
+    .contact-eyebrow::before, .contact-eyebrow::after {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--red);
+    }
+
+    .contact-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 10vw, 150px);
+      line-height: 0.88; letter-spacing: -0.01em;
+      margin-bottom: 44px;
+    }
+    .contact-title .line { display: block; overflow: visible; padding: 0.04em 0; }
+    .contact-title .line-clip { display: block; overflow: hidden; }
+    .contact-title .line-clip span { display: block; }
+
+    /* .contact-link visual styles handled by .grad-btn */
+
+    /* ─── SOCIAL LINKS ───────────────────────────────────── */
+    .social-links {
+      display: flex; align-items: center; gap: 12px;
+      list-style: none; margin: 0; padding: 0;
+    }
+    .social-item { position: relative; margin: 0; padding: 0; line-height: 0; }
+    .social-link {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .social-link:hover { border-color: transparent; }
+    .social-fill {
+      position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 0;
+      transition: height 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    .social-link:hover .social-fill { height: 100%; }
+    .social-icon {
+      position: relative; z-index: 1;
+      display: block;
+      width: 20px; height: 20px;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+    .social-link:hover .social-icon { transform: scale(1.1); }
+    .social-tip {
+      position: absolute; bottom: -38px; left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #fff;
+      border-radius: 4px; white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s ease, bottom 0.2s ease;
+    }
+    .social-item:hover .social-tip { opacity: 1; bottom: -44px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 44px 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px; letter-spacing: 0.16em;
+    }
+    .footer-logo .dot { color: var(--red); }
+    .footer-copy {
+      font-size: 11.5px; letter-spacing: 0.05em; color: var(--muted);
+    }
+    .footer-loc {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── LIGHTBOX ───────────────────────────────────────── */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 7000;
+      background: rgba(4,4,4,0.95);
+      backdrop-filter: blur(16px);
+      display: flex; flex-direction: column;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lb-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 40px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .lb-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px; letter-spacing: 0.06em;
+    }
+    .lb-meta {
+      font-size: 12px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 2px;
+    }
+    .lb-close {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--border);
+      background: none; cursor: pointer; color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+    .lb-close:hover { border-color: var(--red); background: rgba(255,45,58,0.08); }
+
+    .lb-stage {
+      flex: 1; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; min-height: 0;
+    }
+    .lb-media {
+      max-width: 100%; max-height: 100%;
+      width: auto; height: auto;
+      object-fit: contain;
+      transition: opacity 0.25s ease;
+    }
+    video.lb-media { max-height: 100%; width: auto; max-width: 100%; }
+
+    .lb-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 1px solid var(--border); background: rgba(8,8,8,0.7);
+      backdrop-filter: blur(8px);
+      cursor: pointer; color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+      z-index: 10;
+    }
+    .lb-arrow:hover { border-color: var(--red); background: rgba(255,45,58,0.12); }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+    .lb-arrow:disabled { opacity: 0.2; pointer-events: none; }
+
+    .lb-counter {
+      position: absolute; bottom: 16px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .lb-thumbs {
+      display: flex; gap: 8px; padding: 14px 40px;
+      overflow-x: auto; flex-shrink: 0;
+      border-top: 1px solid var(--border);
+      scrollbar-width: none;
+    }
+    .lb-thumbs::-webkit-scrollbar { display: none; }
+    .lb-thumb {
+      width: 68px; height: 50px; flex-shrink: 0;
+      object-fit: cover; border-radius: 2px;
+      cursor: pointer; opacity: 0.45;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: opacity 0.2s, border-color 0.2s;
+    }
+    .lb-thumb.active { opacity: 1; border-color: var(--red); }
+    .lb-thumb:hover { opacity: 0.85; border-color: rgba(255,255,255,0.4); }
+
+    /* video thumbnail wrapper */
+    .lb-thumb-vid {
+      width: 68px; height: 50px; flex-shrink: 0;
+      border-radius: 2px; cursor: pointer; opacity: 0.45;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: opacity 0.2s, border-color 0.2s;
+      position: relative; overflow: hidden;
+      background: var(--bg-3);
+      background-size: cover; background-position: center;
+    }
+    .lb-thumb-vid.active { opacity: 1; border-color: var(--red); }
+    .lb-thumb-vid:hover { opacity: 0.85; border-color: rgba(255,255,255,0.4); }
+    .lb-thumb-vid::after {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28px; height: 28px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='rgba(0,0,0,0.45)' stroke='rgba(255,255,255,0.7)' stroke-width='1.5'/%3E%3Cpath d='M10 8.5l5.5 3.5-5.5 3.5z' fill='rgba(255,255,255,0.95)'/%3E%3C/svg%3E");
+      background-size: contain; background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    .lb-thumb-vid.has-frame::after { display: none; }
+
+    /* ─── UTILS ──────────────────────────────────────────── */
+    .gsap-hidden { opacity: 0; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      #nav { padding: 22px 36px; }
+      #nav.scrolled { padding: 14px 36px; }
+
+      #hero { padding: 120px 36px 80px; }
+      .hero-inner {
+        grid-template-columns: 1fr 340px;
+        gap: 48px;
+      }
+      .hero-visual { position: relative; top: auto; transform: none; right: auto; }
+      .avatar-wrap { width: 300px; height: 300px; }
+
+      .section-wrap { padding: 90px 36px; }
+      #about .section-wrap { gap: 60px; }
+
+      .bento {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 360px 260px 280px;
+      }
+      .card-keselect   { grid-column: 1 / 4; grid-row: 1; }
+      .card-amazigh    { grid-column: 4 / 7; grid-row: 1; }
+      .card-jerseyland { grid-column: 1 / 3; grid-row: 2; }
+      .card-sada       { grid-column: 3 / 5; grid-row: 2; }
+      .card-pyramids   { grid-column: 5 / 7; grid-row: 2; }
+      .card-water      { display: none; }
+      .card-redbull    { grid-column: 1 / 7; grid-row: 3; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      /* Nav */
+      #nav { padding: 18px 20px; }
+      #nav.scrolled { padding: 12px 20px; }
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 10px; letter-spacing: 0.12em; }
+
+      /* Hero */
+      #hero { padding: 100px 20px 70px; min-height: auto; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .hero-visual {
+        position: relative;
+        top: auto;
+        transform: none;
+        right: auto;
+        order: -1;
+        margin-bottom: 36px;
+      }
+      .avatar-wrap { width: 200px; height: 200px; }
+      .avatar-ring-2 { inset: -28px; }
+      .badge-1 { right: 0; top: 8px; font-size: 10px; padding: 8px 12px; }
+      .badge-2 { left: 0; bottom: 16px; font-size: 10px; padding: 8px 12px; }
+      .hero-title { font-size: clamp(64px, 17vw, 96px); margin-bottom: 20px; }
+      .hero-sub { font-size: 15px; margin-bottom: 36px; }
+      .social-links.hero-socials { margin-top: 56px; }
+      .scroll-hint { display: none; }
+
+      /* Sections */
+      .section-wrap { padding: 72px 20px; }
+      #projects .section-wrap { padding-bottom: 0; }
+
+      /* Bento — single column stack */
+      .bento {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(7, 260px);
+        gap: 8px;
+        padding-bottom: 72px;
+      }
+      .card-keselect,
+      .card-amazigh,
+      .card-jerseyland,
+      .card-sada,
+      .card-pyramids,
+      .card-water,
+      .card-redbull {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        display: block;
+      }
+
+      /* About */
+      #about .section-wrap {
+        grid-template-columns: 1fr;
+        gap: 52px;
+      }
+      .about-quote { font-size: clamp(22px, 6vw, 34px); }
+      .stat-bg-num { font-size: 140px; }
+      .skills { grid-template-columns: 1fr; }
+
+      /* Contact */
+      #contact .section-wrap { padding: 80px 20px 70px; }
+      .contact-title { font-size: clamp(56px, 15vw, 100px); }
+
+      /* Footer */
+      footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 32px 20px;
+        text-align: center;
+      }
+    }
+
+    /* Small mobile */
+    @media (max-width: 420px) {
+      .nav-links { gap: 16px; }
+      .hero-title { font-size: clamp(58px, 18vw, 80px); }
+      .bento { grid-template-rows: repeat(6, 220px); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Grain overlay -->
+<div id="grain" aria-hidden="true"></div>
+
+<!-- ─── PRELOADER ─────────────────────────────────────────── -->
+<div id="preloader" aria-hidden="true">
+  <div class="pre-word"><span id="pre-w1">AI CREATIVE</span></div>
+  <div class="pre-bar" id="pre-bar"></div>
+</div>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav id="nav">
+  <a href="#" class="nav-logo">ILIASS<span class="dot">●</span>AI CREATIVE</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section id="hero">
+
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="hero-inner">
+
+    <!-- left -->
+    <div class="hero-left">
+      <div class="hero-eyebrow gsap-hidden" id="h-eyebrow">AI Creative Director</div>
+
+      <h1 class="hero-title">
+        <span class="line"><span class="line-clip"><span>MAKING</span></span></span>
+        <span class="line line-glow"><span class="line-clip"><span class="accent">WORLDS</span></span></span>
+        <span class="line"><span class="line-clip"><span>WITH AI</span></span></span>
+      </h1>
+
+      <p class="hero-sub">
+        Where Moroccan culture meets artificial imagination — crafting visual identities,
+        brand campaigns, and motion stories that transcend the ordinary.
+      </p>
+
+      <a href="#projects" class="hero-cta grad-btn" aria-label="View selected work">
+        View Selected Work
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <ul class="social-links hero-socials gsap-hidden" aria-label="Social media links">
+        <li class="social-item">
+          <a href="https://www.instagram.com/iliass_touijri/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <div class="social-fill" style="background:#e1306c"></div>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <div class="social-tip" style="background:#e1306c">Instagram</div>
+        </li>
+        <li class="social-item">
+          <a href="https://www.linkedin.com/in/iliass-touijri-18aa4b361/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+            <div class="social-fill" style="background:#0a66c2"></div>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <div class="social-tip" style="background:#0a66c2">LinkedIn</div>
+        </li>
+        <li class="social-item">
+          <a href="https://youtube.com/" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <div class="social-fill" style="background:#ff0000"></div>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#ff0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+            </svg>
+          </a>
+          <div class="social-tip" style="background:#ff0000">YouTube</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- right — avatar -->
+    <div class="hero-visual">
+
+      <div class="hero-badge badge-1" id="badge-1">
+        <div class="badge-num">30+</div>
+        <div>Projects</div>
+      </div>
+      <div class="hero-badge badge-2" id="badge-2">AI · Motion · Identity</div>
+
+      <div class="avatar-wrap" id="avatar-wrap">
+        <div class="avatar-glow"></div>
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring-2"></div>
+        <div class="avatar-circle">
+          <img src="Profile.png" alt="AI Creative Director profile" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- scroll hint -->
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
+
+</section>
+
+<!-- ─── TICKER ─────────────────────────────────────────────── -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>AI Creative Direction</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Motion Design</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Brand Campaigns</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AI Photography</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Cultural Storytelling</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>3D Animation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Visual Identity</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Morocco</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span>AI Creative Direction</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Motion Design</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Brand Campaigns</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AI Photography</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Cultural Storytelling</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>3D Animation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Visual Identity</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Morocco</span>
+  </div>
+</div>
+
+<span class="decor-line"></span>
+
+<!-- ─── PROJECTS ──────────────────────────────────────────── -->
+<section id="projects">
+  <div class="section-wrap">
+
+    <div class="projects-header">
+      <div>
+        <div class="section-eyebrow gsap-hidden">Selected Work</div>
+        <div class="section-title gsap-hidden">PROJECTS</div>
+      </div>
+      <div class="projects-count gsap-hidden">07 Pieces</div>
+    </div>
+
+    <div class="bento">
+
+      <!-- KESELECT (featured) -->
+      <article class="card card-keselect gsap-hidden" tabindex="0" aria-label="Keselect AI Brand Campaign" data-project="keselect">
+        <div class="card-media">
+          <img src="projects/Keselect/OASIS%20CULTURE/Oasis3.jpg"
+               alt="Keselect campaign — woman holding watch at Moroccan sunset"
+               loading="lazy" />
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">AI Brand Campaign</span>
+            <span class="tag">Morocco</span>
+          </div>
+          <div class="card-name">KESELECT</div>
+          <p class="card-desc">AI-powered brand campaign shot across Casablanca, Chefchaouen, Essouira & Marrakech for the Kieslect smartwatch.</p>
+        </div>
+      </article>
+
+      <!-- AMAZIGH PHOTOSHOT -->
+      <article class="card card-amazigh gsap-hidden" tabindex="0" aria-label="Amazigh Photoshot" data-project="amazigh">
+        <div class="card-media">
+          <img src="projects/Amazigh%20Photoshot/1765035270922.jpg"
+               alt="Close-up eye portrait with Amazigh silver crown"
+               loading="lazy" />
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">AI Photography</span>
+            <span class="tag">Cultural Heritage</span>
+          </div>
+          <div class="card-name">AMAZIGH PHOTOSHOT</div>
+          <p class="card-desc">A visual homage to Amazigh identity through AI-crafted portraiture and intricate cultural detail.</p>
+        </div>
+      </article>
+
+      <!-- JERSEYLAND -->
+      <article class="card card-jerseyland gsap-hidden" tabindex="0" aria-label="Jerseyland" data-project="jerseyland">
+        <div class="card-media">
+          <img src="projects/jerseyland/Jerseyland/1766341711289.jpg"
+               alt="Man on rearing horse in Moroccan street at dusk"
+               loading="lazy" />
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">AI Photography</span>
+          </div>
+          <div class="card-name">JERSEYLAND</div>
+          <p class="card-desc">Cinematic AI photography celebrating Moroccan street culture and urban identity.</p>
+        </div>
+      </article>
+
+      <!-- SADA PLATFORM -->
+      <article class="card card-sada gsap-hidden" tabindex="0" aria-label="Sada Platform" data-project="sada">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="projects/sada%20platform/Sada%20Platform%20AI/get.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">Motion</span>
+            <span class="tag">Content Platform</span>
+          </div>
+          <div class="card-name">SADA PLATFORM</div>
+          <p class="card-desc">AI-driven motion content for a Moroccan digital storytelling platform.</p>
+        </div>
+      </article>
+
+      <!-- PYRAMIDS -->
+      <article class="card card-pyramids gsap-hidden" tabindex="0" aria-label="Pyramids" data-project="pyramids">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="projects/pyramids/Pyramids/output_progressive_7da1dc68-7e66-4d96-8ba8-28d2913ff9ff.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">Motion Design</span>
+            <span class="tag">3D</span>
+          </div>
+          <div class="card-name">PYRAMIDS</div>
+          <p class="card-desc">AI motion design exploring ancient architecture through fluid animation.</p>
+        </div>
+      </article>
+
+      <!-- WATER DROP STORY -->
+      <article class="card card-water gsap-hidden" tabindex="0" aria-label="Water Drop Story" data-project="water">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="projects/Water%20Drop%20story/SRK%203D%20animation%20Qtira.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">Motion</span>
+            <span class="tag">3D</span>
+          </div>
+          <div class="card-name">WATER DROP</div>
+          <p class="card-desc">3D animated story exploring form, fluid motion, and visual narrative.</p>
+        </div>
+      </article>
+
+      <!-- RED BULL AD -->
+      <article class="card card-redbull gsap-hidden" tabindex="0" aria-label="Red Bull AD" data-project="redbull">
+        <div class="card-media">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="projects/RedBull%20AD/Redbull%20ad.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">Motion Design</span>
+            <span class="tag">Ad Campaign</span>
+          </div>
+          <div class="card-name">RED BULL AD</div>
+          <p class="card-desc">High-energy AI motion campaign for Red Bull — cinematic pacing, bold visuals, and brand-first storytelling.</p>
+        </div>
+      </article>
+
+    </div><!-- /bento -->
+  </div>
+</section>
+
+<span class="decor-line"></span>
+
+<!-- ─── ABOUT ────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-wrap">
+
+    <!-- left -->
+    <div>
+      <div class="section-eyebrow gsap-hidden">About</div>
+      <blockquote class="about-quote gsap-hidden">
+        I create at the intersection of
+        <em>artificial intelligence</em>
+        and human culture
+      </blockquote>
+      <div class="about-rule gsap-hidden"></div>
+      <p class="about-body gsap-hidden">
+        An AI creative director and motion designer based in Morocco. I specialize in building
+        visual worlds that fuse cutting-edge AI tools with deep cultural roots — from brand
+        campaigns and AI photography to motion storytelling and content creation.
+        <br><br>
+        Every project starts with a story. AI is the brush. Culture is the canvas.
+      </p>
+
+      <div class="skills gsap-hidden">
+        <div class="skill">
+          <div class="skill-name">AI Direction</div>
+          <div class="skill-detail">Nano Banana Pro · Midjourney · Kling</div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Motion Design</div>
+          <div class="skill-detail">After Effects · Cinema 4D</div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Brand Campaigns</div>
+          <div class="skill-detail">Visual Identity · Strategy</div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Photography</div>
+          <div class="skill-detail">AI-Enhanced · Cultural</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right — stats -->
+    <div class="about-stats">
+      <div class="stat-bg-num" aria-hidden="true">30</div>
+
+      <div class="stat-row gsap-hidden">
+        <div class="stat-num red">30+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-row gsap-hidden">
+        <div class="stat-num">Morocco</div>
+        <div class="stat-label">Based In</div>
+      </div>
+      <div class="stat-row gsap-hidden">
+        <div class="stat-num" style="font-size:clamp(22px,2.5vw,36px);line-height:1.1">AI Creative<br>Director</div>
+        <div class="stat-label">Specialty</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<span class="decor-line"></span>
+
+<!-- ─── CONTACT ───────────────────────────────────────────── -->
+<section id="contact">
+  <div class="contact-bg-glow" aria-hidden="true"></div>
+  <div class="section-wrap">
+    <div class="contact-eyebrow gsap-hidden">Get In Touch</div>
+    <h2 class="contact-title">
+      <span class="line"><span class="line-clip"><span class="gsap-hidden">LET'S</span></span></span>
+      <span class="line line-glow"><span class="line-clip"><span class="gsap-hidden" style="color:var(--red)">CREATE</span></span></span>
+    </h2>
+    <a href="mailto:iliasstouijri@gmail.com" class="contact-link grad-btn gsap-hidden" aria-label="Send email to Iliass Touijri">
+      iliasstouijri@gmail.com
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- ─── LIGHTBOX ─────────────────────────────────────────── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Project viewer">
+  <div class="lb-header">
+    <div>
+      <div class="lb-title" id="lb-title"></div>
+      <div class="lb-meta" id="lb-meta"></div>
+    </div>
+    <button class="lb-close" id="lb-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="lb-stage" id="lb-stage">
+    <button class="lb-arrow lb-prev" id="lb-prev" aria-label="Previous">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M11 3L4 9L11 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div id="lb-media-wrap" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:20px 80px;"></div>
+    <button class="lb-arrow lb-next" id="lb-next" aria-label="Next">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M7 3L14 9L7 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+</div>
+
+<!-- ─── FOOTER ───────────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">AI<span class="dot">●</span>CREATIVE</div>
+
+  <ul class="social-links" aria-label="Social media links">
+    <li class="social-item">
+      <a href="https://www.instagram.com/iliass_touijri/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <div class="social-fill" style="background:#e1306c"></div>
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <div class="social-tip" style="background:#e1306c">Instagram</div>
+    </li>
+    <li class="social-item">
+      <a href="https://www.linkedin.com/in/iliass-touijri-18aa4b361/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <div class="social-fill" style="background:#0a66c2"></div>
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <div class="social-tip" style="background:#0a66c2">LinkedIn</div>
+    </li>
+    <li class="social-item">
+      <a href="https://youtube.com/" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+        <div class="social-fill" style="background:#ff0000"></div>
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="#ff0000"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+        </svg>
+      </a>
+      <div class="social-tip" style="background:#ff0000">YouTube</div>
+    </li>
+  </ul>
+
+  <div class="footer-copy">© 2026 — All rights reserved · Morocco</div>
+</footer>
+
+
+<!-- ─── SCRIPTS ──────────────────────────────────────────── -->
+<script>
+(function () {
+  // ── SCROLL RESTORATION ─────────────────────────────────
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
+  // ── PRELOADER ──────────────────────────────────────────
+  const preloader = document.getElementById('preloader');
+  const bar       = document.getElementById('pre-bar');
+  const w1        = document.getElementById('pre-w1');
+
+  // reveal word
+  gsap.to(w1, { y: 0, duration: 0.9, ease: 'power4.out', delay: 0.1 });
+  // grow bar
+  setTimeout(() => { bar.style.width = '220px'; }, 200);
+
+  // hide preloader after ~1.4s
+  setTimeout(() => {
+    gsap.to(preloader, {
+      opacity: 0, duration: 0.5, ease: 'power2.inOut',
+      onComplete() {
+        preloader.style.display = 'none';
+        initMain();
+      }
+    });
+  }, 1400);
+
+  // ── MAIN INIT ──────────────────────────────────────────
+  function initMain() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // NAV scroll class
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── HERO ──────────────────────────────────────────────
+
+    // eyebrow
+    gsap.fromTo('#h-eyebrow',
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 }
+    );
+
+    // title lines
+    gsap.to('.hero-title .line-clip span', {
+      y: 0,
+      duration: 1.1,
+      stagger: 0.12,
+      ease: 'power4.out',
+      delay: 0.15,
+    });
+
+    // sub + cta fade
+    gsap.to('.hero-sub', {
+      opacity: 1, duration: 0.9, ease: 'power2.out', delay: 0.72,
+    });
+    gsap.to('.hero-cta', {
+      opacity: 1, duration: 0.8, ease: 'power2.out', delay: 1.0,
+    });
+    gsap.to('.hero-socials', {
+      opacity: 1, duration: 0.8, ease: 'power2.out', delay: 1.2,
+    });
+
+    // avatar entrance
+    gsap.fromTo('#avatar-wrap',
+      { scale: 0.82, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1.3, ease: 'power3.out', delay: 0.2 }
+    );
+
+    // badges
+    gsap.fromTo(['#badge-1', '#badge-2'],
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out', delay: 1.1 }
+    );
+
+    // hero parallax on scroll
+    gsap.to('.hero-left', {
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.5 },
+      y: 70, ease: 'none',
+    });
+    gsap.to('#avatar-wrap', {
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 },
+      y: 90, ease: 'none',
+    });
+
+    // ── PROJECTS ──────────────────────────────────────────
+
+    // section header
+    gsap.fromTo('.section-eyebrow, .section-title, .projects-count',
+      { opacity: 0, y: 28 },
+      { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+        scrollTrigger: { trigger: '.projects-header', start: 'top 88%' } }
+    );
+
+    // cards stagger
+    const cards = document.querySelectorAll('.bento .card');
+    cards.forEach((card, i) => {
+      gsap.fromTo(card,
+        { opacity: 0, y: 44 },
+        {
+          opacity: 1, y: 0, duration: 0.85,
+          delay: i * 0.07,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 90%' }
+        }
+      );
+    });
+
+    // ── ABOUT ─────────────────────────────────────────────
+
+    const aboutItems = document.querySelectorAll('#about .gsap-hidden');
+    aboutItems.forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1, y: 0, duration: 0.85,
+          delay: i * 0.08,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        }
+      );
+    });
+
+    // ── CONTACT ───────────────────────────────────────────
+
+    gsap.fromTo('.contact-eyebrow',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+        scrollTrigger: { trigger: '#contact', start: 'top 85%' } }
+    );
+
+    // contact title lines
+    document.querySelectorAll('.contact-title .line-clip span').forEach((el, i) => {
+      gsap.fromTo(el,
+        { y: '110%', opacity: 1 },
+        { y: '0%', opacity: 1, duration: 1.1,
+          delay: i * 0.14, ease: 'power4.out',
+          scrollTrigger: { trigger: '#contact', start: 'top 80%' } }
+      );
+    });
+
+    gsap.fromTo('.contact-link',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: 'power2.out',
+        scrollTrigger: { trigger: '.contact-link', start: 'top 90%' } }
+    );
+  }
+})();
+
+// ── LIGHTBOX ──────────────────────────────────────────────
+(function () {
+  const PROJECTS = {
+    keselect: {
+      title: 'KESELECT',
+      meta: 'AI Brand Campaign · Morocco',
+      media: [
+        { type:'image', src:'projects/Keselect/OASIS%20CULTURE/Oasis3.jpg' },
+        { type:'image', src:'projects/Keselect/OASIS%20CULTURE/Oasis4.jpg' },
+        { type:'image', src:'projects/Keselect/OASIS%20CULTURE/Oasis6.jpg' },
+        { type:'image', src:'projects/Keselect/OASIS%20CULTURE/Oasis7.jpg' },
+        { type:'image', src:'projects/Keselect/Casablanca/Casablanca3.jpg' },
+        { type:'image', src:'projects/Keselect/Casablanca/Casablanca4.jpg' },
+        { type:'image', src:'projects/Keselect/Chefchaouen/Chefchaouen1.jpg' },
+        { type:'image', src:'projects/Keselect/Chefchaouen/Chefchaouen2.jpg' },
+        { type:'image', src:'projects/Keselect/Chefchaouen/Chefchaouen3.jpg' },
+        { type:'image', src:'projects/Keselect/Chefchaouen/Chefchaouen4.jpg' },
+        { type:'image', src:'projects/Keselect/Essouira/Essouira4.jpg' },
+        { type:'image', src:'projects/Keselect/Essouira/Essouira5.jpg' },
+        { type:'image', src:'projects/Keselect/marrakech/marakech1.jpg' },
+        { type:'image', src:'projects/Keselect/marrakech/marakech2.jpg' },
+        { type:'image', src:'projects/Keselect/marrakech/marakech3.jpg' },
+        { type:'image', src:'projects/Keselect/marrakech/marakech4.jpg' },
+        { type:'image', src:'projects/Keselect/Golden%20watch/0.jpg' },
+      ]
+    },
+    amazigh: {
+      title: 'AMAZIGH PHOTOSHOT',
+      meta: 'AI Photography · Cultural Heritage',
+      media: [
+        { type:'image', src:'projects/Amazigh%20Photoshot/1765035270922.jpg' },
+        { type:'image', src:'projects/Amazigh%20Photoshot/1765035272214.jpg' },
+        { type:'image', src:'projects/Amazigh%20Photoshot/1765035273467.jpg' },
+        { type:'image', src:'projects/Amazigh%20Photoshot/1765035274920.jpg' },
+      ]
+    },
+    jerseyland: {
+      title: 'JERSEYLAND',
+      meta: 'AI Photography',
+      media: [
+        { type:'image', src:'projects/jerseyland/Jerseyland/1766341711289.jpg' },
+        { type:'image', src:'projects/jerseyland/Jerseyland/1766341711411.jpg' },
+        { type:'image', src:'projects/jerseyland/Jerseyland/1766341712198.jpg' },
+        { type:'image', src:'projects/jerseyland/Jerseyland/1766341712812.jpg' },
+        { type:'image', src:'projects/jerseyland/Jerseyland/1766341714367.jpg' },
+      ]
+    },
+    sada: {
+      title: 'SADA PLATFORM',
+      meta: 'Motion Design · Content Platform',
+      media: [
+        { type:'video', src:'projects/sada%20platform/Sada%20Platform%20AI/get.mp4' },
+        { type:'video', src:'projects/sada%20platform/Sada%20Platform%20AI/_%D9%86%D8%B9%D9%8A%D8%AF%20%D8%A5%D8%AD%D9%8A%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AD%D9%83%D8%A7%D9%8A%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B4%D8%B9%D8%A8%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9%D8%8C%20%D9%83%D9%85%D8%A7%20%D9%83%D8%A7%D9%86%D8%AA%20%D8%AA%D9%8F%D8%B1%D9%88%D9%89%20%D8%B9%D9%84%D9%89%20%D8%B6%D9%88%D8%A1%20%D8%A7%D9%84%D9%82%D9%86%D8%AF%D9%8A%D9%84.%20%F0%9F%95%AF%EF%B8%8F%F0%9F%93%96%D9%86%D8%AD%D9%83%D9%8A%20%D9%83%D9%85%D8%A7%20%D9%83%D8%A7%D9%86%D8%AA%20%D8%A7%D9%84%D8%AC%D8%AF%D9%91%D8%A7.mp4' },
+        { type:'video', src:'projects/sada%20platform/Sada%20Platform%20AI/%D9%81%D9%8A%20%D9%87%D8%B0%D9%87%20%D8%A7%D9%84%D8%AD%D9%84%D9%82%D8%A9%20%D9%85%D9%86%20%D8%A8%D9%88%D8%AF%D9%83%D8%A7%D8%B3%D8%AA%20%E2%80%9C%D9%85%D8%A7%D8%B0%D8%A7%20%D9%86%D9%82%D8%B5%D8%AF%D8%9F%E2%80%9D%20%D9%86%D8%BA%D9%88%D8%B5%20%D9%81%D9%8A%20%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%A7%D9%86%D8%AD%D9%8A%D8%A7%D8%B2%20%D8%A7%D9%84%D8%AA%D8%A3%D9%83%D9%8A%D8%AF%D9%8A%20%F0%9F%A7%A0%F0%9F%94%8D%D8%8C%20%D9%88%D9%86%D8%A3%D8%AE%D8%B0%D9%83%20%D9%81%D9%8A%20%D8%B1%D8%AD%D9%84%D8%A9%20%D8%AA%D9%83%D8%B4%D9%81%20%D9%84.mp4' },
+        { type:'video', src:'projects/sada%20platform/Sada%20Platform%20AI/%D9%87%D8%B0%D9%87%20%D9%84%D9%8A%D8%B3%D8%AA%20%D9%81%D9%82%D8%B7%20%D9%82%D8%B5%D8%A9%20%D9%88%D8%AB%D9%8A%D9%82%D8%A9%20%D9%82%D8%A7%D9%86%D9%88%D9%86%D9%8A%D8%A9..%20%D8%A8%D9%84%20%D8%AD%D9%83%D8%A7%D9%8A%D8%A9%20%D9%84%D8%AD%D8%B8%D8%A9%20%D8%AD%D8%A7%D8%B3%D9%85%D8%A9%20%D8%A3%D8%B9%D8%A7%D8%AF%D8%AA%20%D8%AA%D8%B9%D8%B1%D9%8A%D9%81%20%D8%B4%D9%83%D9%84%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%20%D8%A8%D8%B9%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%82.mp4' },
+      ]
+    },
+    pyramids: {
+      title: 'PYRAMIDS',
+      meta: 'Motion Design · 3D',
+      media: [
+        { type:'video', src:'projects/pyramids/Pyramids/output_progressive_7da1dc68-7e66-4d96-8ba8-28d2913ff9ff.mp4' },
+      ]
+    },
+    water: {
+      title: 'WATER DROP',
+      meta: 'Motion Design · 3D',
+      media: [
+        { type:'video', src:'projects/Water%20Drop%20story/SRK%203D%20animation%20Qtira.mp4' },
+      ]
+    },
+    redbull: {
+      title: 'RED BULL AD',
+      meta: 'Motion Design · Ad Campaign',
+      media: [
+        { type:'video', src:'projects/RedBull%20AD/Redbull%20ad.mp4' },
+      ]
+    },
+  };
+
+  let currentProject = null;
+  let currentIndex   = 0;
+
+  const lb       = document.getElementById('lightbox');
+  const lbTitle  = document.getElementById('lb-title');
+  const lbMeta   = document.getElementById('lb-meta');
+  const lbWrap   = document.getElementById('lb-media-wrap');
+  const lbThumbs = document.getElementById('lb-thumbs');
+  const lbPrev   = document.getElementById('lb-prev');
+  const lbNext   = document.getElementById('lb-next');
+  const lbCounter= document.getElementById('lb-counter');
+  const lbClose  = document.getElementById('lb-close');
+
+  function openProject(key) {
+    currentProject = PROJECTS[key];
+    currentIndex   = 0;
+    if (!currentProject) return;
+
+    lbTitle.textContent = currentProject.title;
+    lbMeta.textContent  = currentProject.meta;
+
+    // build thumbnails
+    lbThumbs.innerHTML = '';
+    currentProject.media.forEach((item, i) => {
+      let el;
+      if (item.type === 'video') {
+        el = document.createElement('div');
+        el.className = 'lb-thumb-vid' + (i === 0 ? ' active' : '');
+        // attempt canvas frame capture
+        const v = document.createElement('video');
+        v.muted = true; v.preload = 'auto'; v.src = item.src;
+        v.style.cssText = 'position:fixed;visibility:hidden;pointer-events:none;width:1px;height:1px;';
+        document.body.appendChild(v);
+        let seekAttempt = 0;
+        const seekTimes = [1, 2, 0.5, 3];
+        const cleanup = (t) => { clearTimeout(t); v.removeEventListener('seeked', tryCapture); v.remove(); };
+        function tryCapture() {
+          try {
+            const c = document.createElement('canvas');
+            c.width = 136; c.height = 100;
+            const ctx = c.getContext('2d');
+            ctx.drawImage(v, 0, 0, 136, 100);
+            const d = ctx.getImageData(0, 0, 136, 100).data;
+            let sum = 0;
+            for (let p = 0; p < d.length; p += 16) sum += d[p] + d[p+1] + d[p+2];
+            if (sum > 5000 || seekAttempt >= seekTimes.length - 1) {
+              if (sum > 5000) {
+                el.style.backgroundImage = 'url(' + c.toDataURL('image/jpeg', 0.85) + ')';
+                el.classList.add('has-frame');
+              }
+              cleanup(guard);
+            } else {
+              seekAttempt++;
+              v.currentTime = seekTimes[seekAttempt];
+            }
+          } catch(e) { cleanup(guard); }
+        }
+        const guard = setTimeout(() => { v.removeEventListener('seeked', tryCapture); v.remove(); }, 12000);
+        v.addEventListener('seeked', tryCapture);
+        v.addEventListener('loadeddata', () => { v.currentTime = seekTimes[0]; }, { once: true });
+        v.addEventListener('error', () => { cleanup(guard); }, { once: true });
+      } else {
+        el = document.createElement('img');
+        el.className = 'lb-thumb' + (i === 0 ? ' active' : '');
+        el.src = item.src;
+      }
+      el.addEventListener('click', () => goTo(i));
+      lbThumbs.appendChild(el);
+    });
+
+    showMedia(0);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProject() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    // pause any video
+    const vid = lbWrap.querySelector('video');
+    if (vid) vid.pause();
+  }
+
+  function showMedia(index) {
+    const items = currentProject.media;
+    currentIndex = Math.max(0, Math.min(index, items.length - 1));
+    const item = items[currentIndex];
+
+    // pause old video
+    const oldVid = lbWrap.querySelector('video');
+    if (oldVid) oldVid.pause();
+
+    lbWrap.innerHTML = '';
+    if (item.type === 'video') {
+      const v = document.createElement('video');
+      v.src = item.src; v.controls = true; v.autoplay = true;
+      v.style.cssText = 'max-width:100%;max-height:100%;outline:none;';
+      lbWrap.appendChild(v);
+    } else {
+      const img = document.createElement('img');
+      img.src = item.src; img.className = 'lb-media';
+      img.alt = currentProject.title;
+      lbWrap.appendChild(img);
+    }
+
+    // update thumbs
+    lbThumbs.querySelectorAll('.lb-thumb, .lb-thumb-vid').forEach((t, i) => {
+      t.classList.toggle('active', i === currentIndex);
+    });
+    // scroll active thumb into view
+    const activeThumb = lbThumbs.querySelectorAll('.lb-thumb, .lb-thumb-vid')[currentIndex];
+    if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    lbCounter.textContent = (currentIndex + 1) + ' / ' + items.length;
+    lbPrev.disabled = currentIndex === 0;
+    lbNext.disabled = currentIndex === items.length - 1;
+  }
+
+  function goTo(i) { showMedia(i); }
+
+  lbPrev.addEventListener('click', () => goTo(currentIndex - 1));
+  lbNext.addEventListener('click', () => goTo(currentIndex + 1));
+  lbClose.addEventListener('click', closeProject);
+
+  lb.addEventListener('click', e => { if (e.target === lb) closeProject(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeProject();
+    if (e.key === 'ArrowLeft')  goTo(currentIndex - 1);
+    if (e.key === 'ArrowRight') goTo(currentIndex + 1);
+  });
+
+  // wire up cards
+  document.querySelectorAll('.card[data-project]').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => openProject(card.dataset.project));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openProject(card.dataset.project);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
