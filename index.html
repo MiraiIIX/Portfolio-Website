@@ -509,7 +509,7 @@
     .bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: 460px 300px 320px;
+      grid-template-rows: 460px 300px 320px 380px;
       gap: 10px;
       padding-bottom: 120px;
     }
@@ -529,7 +529,9 @@
     .card-sada       { grid-column: 4 / 7;  grid-row: 2; }
     .card-pyramids   { grid-column: 7 / 10; grid-row: 2; }
     .card-water      { grid-column: 10 / 13; grid-row: 2; }
-    .card-redbull    { grid-column: 1 / 13; grid-row: 3; }
+    .card-redbull      { grid-column: 1 / 13; grid-row: 3; }
+    .card-voidwalkers  { grid-column: 1 / 7;  grid-row: 4; }
+    .card-aisha        { grid-column: 7 / 13; grid-row: 4; }
 
     /* card media */
     .card-media {
@@ -961,15 +963,17 @@
 
       .bento {
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 360px 260px 280px;
+        grid-template-rows: 360px 260px 280px 300px;
       }
-      .card-keselect   { grid-column: 1 / 4; grid-row: 1; }
-      .card-amazigh    { grid-column: 4 / 7; grid-row: 1; }
-      .card-jerseyland { grid-column: 1 / 3; grid-row: 2; }
-      .card-sada       { grid-column: 3 / 5; grid-row: 2; }
-      .card-pyramids   { grid-column: 5 / 7; grid-row: 2; }
-      .card-water      { display: none; }
-      .card-redbull    { grid-column: 1 / 7; grid-row: 3; }
+      .card-keselect    { grid-column: 1 / 4; grid-row: 1; }
+      .card-amazigh     { grid-column: 4 / 7; grid-row: 1; }
+      .card-jerseyland  { grid-column: 1 / 3; grid-row: 2; }
+      .card-sada        { grid-column: 3 / 5; grid-row: 2; }
+      .card-pyramids    { grid-column: 5 / 7; grid-row: 2; }
+      .card-water       { display: none; }
+      .card-redbull     { grid-column: 1 / 7; grid-row: 3; }
+      .card-voidwalkers { grid-column: 1 / 4; grid-row: 4; }
+      .card-aisha       { grid-column: 4 / 7; grid-row: 4; }
     }
 
     /* Mobile */
@@ -1010,7 +1014,7 @@
       /* Bento — single column stack */
       .bento {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(7, 260px);
+        grid-template-rows: repeat(9, 260px);
         gap: 8px;
         padding-bottom: 72px;
       }
@@ -1020,7 +1024,9 @@
       .card-sada,
       .card-pyramids,
       .card-water,
-      .card-redbull {
+      .card-redbull,
+      .card-voidwalkers,
+      .card-aisha {
         grid-column: 1 / -1;
         grid-row: auto;
         display: block;
@@ -1053,7 +1059,7 @@
     @media (max-width: 420px) {
       .nav-links { gap: 16px; }
       .hero-title { font-size: clamp(58px, 18vw, 80px); }
-      .bento { grid-template-rows: repeat(6, 220px); }
+      .bento { grid-template-rows: repeat(8, 220px); }
     }
   </style>
 </head>
@@ -1323,6 +1329,39 @@
           </div>
           <div class="card-name">RED BULL AD</div>
           <p class="card-desc">High-energy AI motion campaign for Red Bull — cinematic pacing, bold visuals, and brand-first storytelling.</p>
+        </div>
+      </article>
+
+      <!-- VOID WALKERS -->
+      <article class="card card-voidwalkers gsap-hidden" tabindex="0" aria-label="Void Walkers Project" data-project="voidwalkers">
+        <div class="card-media">
+          <img src="projects/void walkers/2k.jpg" alt="Void Walkers esport jersey campaign" loading="lazy" />
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">Esport</span>
+            <span class="tag">Campaign</span>
+            <span class="tag">Jersey Release</span>
+          </div>
+          <div class="card-name">VOID WALKERS</div>
+          <p class="card-desc">Full campaign and teaser video for the Void Walkers Moroccan esport team jersey release.</p>
+        </div>
+      </article>
+
+      <!-- AISHA -->
+      <article class="card card-aisha gsap-hidden" tabindex="0" aria-label="Aisha Confiture" data-project="aisha">
+        <div class="card-media">
+          <img src="https://img.youtube.com/vi/C3s4QUprjjs/maxresdefault.jpg" alt="Aisha confiture product ad" loading="lazy" />
+        </div>
+        <div class="card-overlay"></div>
+        <div class="card-info">
+          <div class="card-tags">
+            <span class="tag">Product Ad</span>
+            <span class="tag">Motion Design</span>
+          </div>
+          <div class="card-name">AISHA</div>
+          <p class="card-desc">AI-crafted product ad video for Aisha, a Moroccan confiture brand.</p>
         </div>
       </article>
 
@@ -1713,6 +1752,30 @@
       meta: 'Motion Design · Ad Campaign',
       media: [
         { type:'youtube', src:'H-6G3ZewMwA' },
+      ]
+    },
+    voidwalkers: {
+      title: 'VOID WALKERS',
+      meta: 'Esport · Campaign · Jersey Release',
+      media: [
+        { type:'youtube', src:'hoaZMTw5HW4', vertical:true },
+        { type:'image', src:'projects/void walkers/2k.jpg' },
+        { type:'image', src:'projects/void walkers/freepik_cinematic-campaign-shot-t_2861350382.jpg' },
+        { type:'image', src:'projects/void walkers/freepik_cinematic-campaign-shot-t_2861350391.jpg' },
+        { type:'image', src:'projects/void walkers/freepik_cinematic-editorial-photo_2861334667.jpg' },
+        { type:'image', src:'projects/void walkers/magnific_cinematic-editorial-fashi_2893223945.jpg' },
+        { type:'image', src:'projects/void walkers/magnific_cinematic-editorial-produ_2893442890.jpg' },
+        { type:'image', src:'projects/void walkers/magnific_cinematic-editorial-produ_2893449535.jpg' },
+        { type:'image', src:'projects/void walkers/magnific_cinematic-editorial-produ_2893450468.jpg' },
+        { type:'image', src:'projects/void walkers/magnific_img3-the-guy-turned-aroun_2893219576.jpg' },
+        { type:'image', src:'projects/void walkers/magnific_surreal-cinematic-editori_2893450248.jpg' },
+      ]
+    },
+    aisha: {
+      title: 'AISHA',
+      meta: 'Product Ad · Motion Design',
+      media: [
+        { type:'youtube', src:'C3s4QUprjjs', vertical:true },
       ]
     },
   };
