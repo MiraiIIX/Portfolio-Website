@@ -82,6 +82,10 @@
     }
 
     /* ── HERO ──────────────────────────────────────────── */
+    @keyframes hero-drift {
+      0%   { transform: scale(1)    translate(0,0); }
+      100% { transform: scale(1.06) translate(-1%,-1%); }
+    }
     .hero {
       position: relative;
       min-height: 100vh;
@@ -89,25 +93,30 @@
       overflow: hidden;
       background: #05060a;
     }
-    /* Radial warm glow instead of photo — pure atmosphere */
-    .hero-glow {
+    .hero-photo {
       position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      animation: hero-drift 18s ease-in-out infinite alternate;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
       background:
-        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(232,160,74,0.14) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 30% 70%, rgba(180,80,40,0.10) 0%, transparent 65%);
+        linear-gradient(to top, rgba(5,6,10,0.95) 0%, rgba(5,6,10,0.5) 45%, rgba(5,6,10,0.2) 100%),
+        radial-gradient(ellipse 60% 50% at 65% 40%, rgba(232,160,74,0.12) 0%, transparent 70%);
     }
     /* Decorative large letter */
     .hero-letter {
-      position: absolute;
+      position: absolute; z-index: 2;
       right: -2vw; top: 50%; transform: translateY(-55%);
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(280px, 40vw, 500px);
-      color: rgba(232,160,74,0.04);
+      color: rgba(232,160,74,0.06);
       line-height: 1; user-select: none; pointer-events: none;
       letter-spacing: -0.02em;
     }
     .hero-content {
-      position: relative; z-index: 2;
+      position: relative; z-index: 3;
       padding: 0 48px 80px;
       max-width: 860px;
     }
@@ -351,7 +360,8 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
+  <img class="hero-photo" src="projects/Aisha/aisha-hero.jpg" alt="Aisha confiture — cinematic product shot" />
+  <div class="hero-overlay"></div>
   <div class="hero-letter">A</div>
   <div class="hero-content">
     <div class="hero-eyebrow">Case Study · 2025</div>
