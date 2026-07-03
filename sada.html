@@ -49,17 +49,27 @@
     .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
 
     /* HERO */
+    @keyframes hero-drift {
+      0%   { transform: scale(1)    translate(0,0); }
+      100% { transform: scale(1.06) translate(-1%,-1%); }
+    }
     .hero {
       min-height: 100vh;
       display: flex; align-items: flex-end;
       position: relative; overflow: hidden;
       background: #050a09;
     }
-    .hero-glow {
+    .hero-photo {
       position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      animation: hero-drift 18s ease-in-out infinite alternate;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
       background:
-        radial-gradient(ellipse 60% 50% at 75% 35%, rgba(61,158,140,0.12) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(30,100,80,0.08) 0%, transparent 60%);
+        linear-gradient(to top, rgba(5,10,9,0.95) 0%, rgba(5,10,9,0.45) 45%, rgba(5,10,9,0.2) 100%),
+        radial-gradient(ellipse 55% 50% at 70% 35%, rgba(61,158,140,0.10) 0%, transparent 65%);
     }
     /* Sound wave decoration */
     .hero-waves {
@@ -84,7 +94,8 @@
     .hero-waves span:nth-child(11){height:40px;animation-delay:1.5s}
     @keyframes wave { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.4)} }
 
-    .hero-content { position: relative; z-index: 2; padding: 0 48px 80px; max-width: 800px; }
+    .hero-waves { z-index: 2; }
+    .hero-content { position: relative; z-index: 3; padding: 0 48px 80px; max-width: 800px; }
     .hero-eyebrow { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
     .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--teal); }
     .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 12vw, 140px); line-height: 0.88; letter-spacing: 0.02em; color: var(--text); margin-bottom: 28px; }
@@ -200,7 +211,8 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
+  <img class="hero-photo" src="projects/Sada%20Platform/sada-hero.jpg" alt="Sada Platform — cinematic storytelling hero shot" />
+  <div class="hero-overlay"></div>
   <div class="hero-waves">
     <span></span><span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span><span></span><span></span>
