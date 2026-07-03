@@ -514,6 +514,37 @@
     .bento-featured { grid-template-rows: 460px 310px; margin-bottom: 0; }
     .bento-other    { grid-template-rows: 290px 360px; padding-bottom: 120px; }
 
+    /* case studies glowing box */
+    @keyframes case-glow {
+      0%, 100% {
+        box-shadow: 0 0 22px rgba(255,45,58,0.10), 0 0 55px rgba(255,45,58,0.05), inset 0 0 22px rgba(255,45,58,0.02);
+        border-color: rgba(255,45,58,0.22);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(255,45,58,0.18), 0 0 80px rgba(255,45,58,0.08), inset 0 0 40px rgba(255,45,58,0.04);
+        border-color: rgba(255,45,58,0.40);
+      }
+    }
+    .case-study-box {
+      position: relative;
+      border: 1px solid rgba(255,45,58,0.22);
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 0;
+      animation: case-glow 4s ease-in-out infinite;
+    }
+    .case-study-label {
+      position: absolute;
+      top: -11px; left: 28px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12px; letter-spacing: 0.28em;
+      color: var(--red);
+      background: var(--bg);
+      padding: 0 14px;
+      text-transform: uppercase;
+    }
+    .case-study-box .bento { gap: 8px; }
+
     /* other-projects divider */
     .other-divider {
       display: flex; align-items: center; gap: 20px;
@@ -1229,6 +1260,9 @@
       <div class="projects-count gsap-hidden">09 Pieces</div>
     </div>
 
+    <div class="case-study-box">
+      <span class="case-study-label">Case Studies</span>
+
     <div class="bento bento-featured">
 
       <!-- VOID WALKERS -->
@@ -1299,6 +1333,7 @@
       </article>
 
     </div><!-- /bento-featured -->
+    </div><!-- /case-study-box -->
 
     <!-- OTHER PROJECTS divider -->
     <div class="other-divider">
