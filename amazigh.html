@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazigh Photoshot — Case Study · Iliass Touijri</title>
+  <meta name="description" content="Amazigh Photoshot — AI portraiture exploring Amazigh cultural heritage. Real or AI? That's the question." />
+
+  <link rel="icon" type="image/png" href="Profile.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red:    #ff2d3a;
+      --gold:   #c9a84c;
+      --bg:     #080808;
+      --bg-2:   #0d0d0d;
+      --text:   #ede8df;
+      --muted:  #5a5550;
+      --border: rgba(255,255,255,0.065);
+      --sand:   #b89a6a;
+      --sand-glow: rgba(184,154,106,0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--sand) var(--bg-2); }
+    body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; overflow-x: hidden; line-height: 1.7; }
+
+    /* GRAIN */
+    #grain {
+      position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.042; pointer-events: none; z-index: 9000;
+      animation: grain 7s steps(10) infinite;
+    }
+    @keyframes grain {
+      0%{transform:translate(0,0)}10%{transform:translate(-4%,-9%)}20%{transform:translate(-14%,4%)}
+      30%{transform:translate(6%,-24%)}40%{transform:translate(-4%,24%)}50%{transform:translate(-14%,9%)}
+      60%{transform:translate(14%,0%)}70%{transform:translate(0%,14%)}80%{transform:translate(3%,34%)}90%{transform:translate(-9%,9%)}
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%);
+    }
+    .nav-back {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--muted); font-size: 11px; letter-spacing: 0.15em;
+      text-decoration: none; text-transform: uppercase; transition: color 0.25s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+
+    /* HERO — split layout */
+    .hero {
+      min-height: 100vh; display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .hero-left {
+      position: relative; overflow: hidden;
+    }
+    .hero-left img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.75);
+      transition: transform 14s ease;
+    }
+    .hero-left:hover img { transform: scale(1.04); }
+    .hero-left-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--bg) 100%);
+    }
+    .hero-right {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 60px 80px 40px;
+      background: var(--bg);
+      position: relative;
+    }
+    /* decorative cross */
+    .hero-right::before {
+      content: '✦';
+      position: absolute; top: 140px; right: 60px;
+      font-size: 48px; color: var(--sand); opacity: 0.15;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sand); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--sand); }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 0.92; letter-spacing: 0.02em;
+      color: var(--text); margin-bottom: 32px;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(17px, 2vw, 21px); font-style: italic; font-weight: 300;
+      color: rgba(237,232,223,0.6); line-height: 1.6; max-width: 420px;
+    }
+
+    /* META */
+    .meta-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .meta-item { padding: 28px 40px; border-right: 1px solid var(--border); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .meta-value { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: var(--text); }
+
+    /* SECTIONS */
+    .section-sm { max-width: 720px; margin: 0 auto; padding: 100px 48px; }
+    .eyebrow {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--sand); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--sand); }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 72px); letter-spacing: 0.03em; line-height: 1; color: var(--text); margin-bottom: 32px; }
+    .body-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2vw, 22px); font-weight: 300; line-height: 1.85; color: rgba(237,232,223,0.8); }
+    .body-text + .body-text { margin-top: 20px; }
+    .highlight-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 30px); font-style: italic; font-weight: 300;
+      color: var(--sand); border-left: 2px solid var(--sand);
+      padding-left: 28px; margin: 48px 0; line-height: 1.5;
+    }
+    .divider { height: 1px; background: var(--border); margin: 0 48px; }
+
+    /* QUESTION SECTION */
+    .question-section {
+      background: var(--bg-2);
+      padding: 100px 48px;
+      text-align: center;
+    }
+    .question-section .inner { max-width: 900px; margin: 0 auto; }
+    .big-question {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 300; line-height: 1.2;
+      color: var(--text); margin-bottom: 32px;
+    }
+    .big-question em { font-style: italic; color: var(--sand); }
+    .question-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 300; line-height: 1.7;
+      color: rgba(237,232,223,0.65); max-width: 620px; margin: 0 auto;
+    }
+
+    /* GALLERY — masonry-feel */
+    .gallery-section { padding: 80px 48px; }
+    .gallery-section .inner { max-width: 1100px; margin: 0 auto; }
+    .gallery-grid {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .gallery-grid img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; border-radius: 3px;
+      cursor: pointer;
+      filter: brightness(0.92);
+      transition: filter 0.5s, transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .gallery-grid img:hover { filter: brightness(1.05); transform: scale(1.015); }
+
+    /* COST COMPARISON */
+    .compare-section { padding: 100px 48px; background: var(--bg-2); border-top: 1px solid var(--border); }
+    .compare-section .inner { max-width: 900px; margin: 0 auto; }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); margin-top: 48px; }
+    .compare-col { background: var(--bg-2); padding: 48px 40px; }
+    .compare-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .compare-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.05em; color: var(--text); margin-bottom: 16px; }
+    .compare-items { list-style: none; }
+    .compare-items li {
+      font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300;
+      color: rgba(237,232,223,0.65); padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .compare-items li:last-child { border-bottom: none; }
+    .compare-items .cross { color: var(--muted); font-size: 12px; }
+    .compare-items .check { color: var(--sand); font-size: 14px; }
+    .compare-bottom { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .compare-cost { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 0.04em; }
+    .compare-cost.red { color: var(--red); }
+    .compare-cost.gold { color: var(--sand); }
+    .compare-cost-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+    /* CTA */
+    .cta-section { padding: 120px 48px; text-align: center; border-top: 1px solid var(--border); }
+    .cta-section h2 { font-size: clamp(48px, 8vw, 96px); margin-bottom: 20px; }
+    .cta-sub { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; font-weight: 300; color: rgba(237,232,223,0.5); margin-bottom: 48px; }
+    .cta-btn { display: inline-block; padding: 16px 48px; border: 1px solid var(--sand); color: var(--text); font-family: 'Syne', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.25s, color 0.25s; }
+    .cta-btn:hover { background: var(--sand); color: #080808; }
+
+    /* FOOTER */
+    footer { padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
+    .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: var(--muted); }
+    .footer-copy { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+
+    /* LIGHTBOX */
+    #glb { position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.95); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    #glb.open { opacity: 1; pointer-events: all; }
+    #glb img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 3px; }
+    #glb-close { position: absolute; top: 24px; right: 32px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: none; border: 1px solid var(--border); color: var(--text); font-size: 20px; cursor: pointer; transition: border-color 0.2s; }
+    #glb-close:hover { border-color: var(--sand); color: var(--sand); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { height: 55vh; }
+      .hero-left-overlay { background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%); }
+      .hero-right { padding: 40px 24px 64px; }
+      .meta-strip { grid-template-columns: repeat(2, 1fr); }
+      .meta-item { padding: 20px 24px; }
+      .section-sm { padding: 72px 24px; }
+      .divider { margin: 0 24px; }
+      .question-section, .gallery-section, .compare-section, .cta-section { padding: 72px 24px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+<div id="grain"></div>
+
+<nav>
+  <a href="index.html" class="nav-back">
+    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+    </svg>
+    Back to Portfolio
+  </a>
+  <a href="index.html" class="nav-name">Iliass Touijri</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <img src="projects/Amazigh%20Photoshot/1765035270922.jpg" alt="Amazigh portrait — close-up eye with silver crown" />
+    <div class="hero-left-overlay"></div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-eyebrow">Personal Project · 2025</div>
+    <h1 class="hero-title">AMAZIGH<br>PHOTOSHOT</h1>
+    <p class="hero-sub">AI portraiture that asks one question: can you tell the difference? The answer, as it turns out, is no.</p>
+  </div>
+</section>
+
+<!-- META -->
+<div class="meta-strip">
+  <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">Personal Project</div></div>
+  <div class="meta-item"><div class="meta-label">Medium</div><div class="meta-value">AI Photography</div></div>
+  <div class="meta-item"><div class="meta-label">Subject</div><div class="meta-value">Cultural Heritage</div></div>
+  <div class="meta-item"><div class="meta-label">Reference Photos</div><div class="meta-value">Zero</div></div>
+</div>
+
+<!-- THE TEST -->
+<div class="section-sm reveal">
+  <div class="eyebrow">The Experiment</div>
+  <h2>What happens when you push AI to its limit?</h2>
+  <p class="body-text">
+    This wasn't a client project. There was no brief, no budget, no deadline. Just a question I needed to answer: how far can AI photography actually go when the subject demands real reverence?
+  </p>
+  <p class="body-text">
+    I chose Amazigh cultural heritage — one of the most visually rich and historically layered traditions in North Africa — because it deserved to be treated with the same care a professional photographer would bring. No shortcuts. No compromises.
+  </p>
+  <div class="highlight-line">
+    The goal wasn't to imitate photography. It was to make something indistinguishable from it.
+  </div>
+  <p class="body-text">
+    The results came back better than expected. The details in the silver jewelry, the texture of the fabric, the light hitting a face the way it only does in the right moment — all of it rendered with a precision that makes you look twice.
+  </p>
+</div>
+
+<div class="divider"></div>
+
+<!-- THE QUESTION -->
+<div class="question-section">
+  <div class="inner">
+    <p class="big-question reveal">
+      <em>Real or AI?</em><br>You shouldn't be this unsure.
+    </p>
+    <p class="question-body reveal">
+      That uncertainty is the whole point. When AI-generated imagery reaches the level where trained eyes pause before answering, something fundamental has shifted about what's possible — and what's accessible.
+    </p>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="inner">
+    <div class="eyebrow reveal">The Work</div>
+    <h2 class="reveal">Four portraits.<br>Zero camera.</h2>
+    <div class="gallery-grid reveal">
+      <img src="projects/Amazigh%20Photoshot/1765035270922.jpg" alt="Amazigh portrait 1" loading="lazy" />
+      <img src="projects/Amazigh%20Photoshot/1765035272214.jpg" alt="Amazigh portrait 2" loading="lazy" />
+      <img src="projects/Amazigh%20Photoshot/1765035273467.jpg" alt="Amazigh portrait 3" loading="lazy" />
+      <img src="projects/Amazigh%20Photoshot/1765035274920.jpg" alt="Amazigh portrait 4" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- COST COMPARISON -->
+<div class="compare-section">
+  <div class="inner">
+    <div class="eyebrow reveal">What This Means Practically</div>
+    <h2 class="reveal">The same results.<br>A fraction of the cost.</h2>
+    <div class="compare-grid">
+      <div class="compare-col reveal">
+        <div class="compare-label">Traditional photoshoot</div>
+        <div class="compare-title">Studio Photography</div>
+        <ul class="compare-items">
+          <li>Professional photographer <span class="cross">required</span></li>
+          <li>Studio rental <span class="cross">required</span></li>
+          <li>Models & styling <span class="cross">required</span></li>
+          <li>Post-production editing <span class="cross">required</span></li>
+          <li>Multiple shoot days <span class="cross">required</span></li>
+        </ul>
+        <div class="compare-bottom">
+          <div class="compare-cost red">$2,000+</div>
+          <div class="compare-cost-label">Minimum budget to get started</div>
+        </div>
+      </div>
+      <div class="compare-col reveal reveal-d1">
+        <div class="compare-label">AI creative direction</div>
+        <div class="compare-title">AI Photography</div>
+        <ul class="compare-items">
+          <li>Creative direction <span class="check">✦</span></li>
+          <li>Unlimited iterations <span class="check">✦</span></li>
+          <li>Any subject, any setting <span class="check">✦</span></li>
+          <li>Delivered in hours <span class="check">✦</span></li>
+          <li>Indistinguishable results <span class="check">✦</span></li>
+        </ul>
+        <div class="compare-bottom">
+          <div class="compare-cost gold">Fraction</div>
+          <div class="compare-cost-label">Of the traditional cost</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="eyebrow reveal" style="justify-content:center;">What This Means For You</div>
+  <h2 class="reveal">Your brand.<br>Photographed by AI.</h2>
+  <p class="cta-sub reveal">
+    Professional-grade imagery at a fraction of the cost.<br>
+    No studio. No photographer. Just creative direction.
+  </p>
+  <a href="index.html#contact" class="cta-btn reveal">Start a Project</a>
+</div>
+
+<footer>
+  <div class="footer-name">Iliass Touijri</div>
+  <div class="footer-copy">© 2025 · AI Creative Director · Morocco</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="glb">
+  <button id="glb-close">✕</button>
+  <img id="glb-img" src="" alt="" />
+</div>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const glb = document.getElementById('glb');
+  const glbImg = document.getElementById('glb-img');
+  document.querySelectorAll('.gallery-grid img').forEach(img => {
+    img.addEventListener('click', () => { glbImg.src = img.src; glb.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  });
+  document.getElementById('glb-close').addEventListener('click', () => { glb.classList.remove('open'); document.body.style.overflow = ''; });
+  glb.addEventListener('click', e => { if (e.target === glb) { glb.classList.remove('open'); document.body.style.overflow = ''; } });
+</script>
+</body>
+</html>

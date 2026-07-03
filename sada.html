@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sada Platform — Case Study · Iliass Touijri</title>
+  <meta name="description" content="Sada Platform — turning Moroccan podcast audio into cinematic short-form storytelling with AI." />
+
+  <link rel="icon" type="image/png" href="Profile.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red:    #ff2d3a;
+      --gold:   #c9a84c;
+      --bg:     #080808;
+      --bg-2:   #0d0d0d;
+      --text:   #ede8df;
+      --muted:  #5a5550;
+      --border: rgba(255,255,255,0.065);
+      --teal:   #3d9e8c;
+      --teal-dim: rgba(61,158,140,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--teal) var(--bg-2); }
+    body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; overflow-x: hidden; line-height: 1.7; }
+
+    /* GRAIN */
+    #grain {
+      position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.042; pointer-events: none; z-index: 9000;
+      animation: grain 7s steps(10) infinite;
+    }
+    @keyframes grain {
+      0%{transform:translate(0,0)}10%{transform:translate(-4%,-9%)}20%{transform:translate(-14%,4%)}
+      30%{transform:translate(6%,-24%)}40%{transform:translate(-4%,24%)}50%{transform:translate(-14%,9%)}
+      60%{transform:translate(14%,0%)}70%{transform:translate(0%,14%)}80%{transform:translate(3%,34%)}90%{transform:translate(-9%,9%)}
+    }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%); }
+    .nav-back { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 11px; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; transition: color 0.25s; }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: flex-end;
+      position: relative; overflow: hidden;
+      background: #050a09;
+    }
+    .hero-glow {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 75% 35%, rgba(61,158,140,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(30,100,80,0.08) 0%, transparent 60%);
+    }
+    /* Sound wave decoration */
+    .hero-waves {
+      position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
+      display: flex; align-items: center; gap: 5px;
+      opacity: 0.07; pointer-events: none;
+    }
+    .hero-waves span {
+      display: block; width: 3px; background: var(--teal); border-radius: 2px;
+      animation: wave 1.8s ease-in-out infinite;
+    }
+    .hero-waves span:nth-child(1){height:40px;animation-delay:0s}
+    .hero-waves span:nth-child(2){height:80px;animation-delay:0.15s}
+    .hero-waves span:nth-child(3){height:120px;animation-delay:0.3s}
+    .hero-waves span:nth-child(4){height:160px;animation-delay:0.45s}
+    .hero-waves span:nth-child(5){height:200px;animation-delay:0.6s}
+    .hero-waves span:nth-child(6){height:240px;animation-delay:0.75s}
+    .hero-waves span:nth-child(7){height:200px;animation-delay:0.9s}
+    .hero-waves span:nth-child(8){height:160px;animation-delay:1.05s}
+    .hero-waves span:nth-child(9){height:120px;animation-delay:1.2s}
+    .hero-waves span:nth-child(10){height:80px;animation-delay:1.35s}
+    .hero-waves span:nth-child(11){height:40px;animation-delay:1.5s}
+    @keyframes wave { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.4)} }
+
+    .hero-content { position: relative; z-index: 2; padding: 0 48px 80px; max-width: 800px; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--teal); }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 12vw, 140px); line-height: 0.88; letter-spacing: 0.02em; color: var(--text); margin-bottom: 28px; }
+    .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.5vw, 24px); font-style: italic; font-weight: 300; color: rgba(237,232,223,0.6); max-width: 520px; line-height: 1.6; }
+
+    /* META */
+    .meta-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .meta-item { padding: 28px 40px; border-right: 1px solid var(--border); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .meta-value { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: var(--text); }
+
+    /* SECTIONS */
+    .section-sm { max-width: 720px; margin: 0 auto; padding: 100px 48px; }
+    .eyebrow { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--teal); }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 72px); letter-spacing: 0.03em; line-height: 1; color: var(--text); margin-bottom: 32px; }
+    .body-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2vw, 22px); font-weight: 300; line-height: 1.85; color: rgba(237,232,223,0.8); }
+    .body-text + .body-text { margin-top: 20px; }
+    .highlight-line { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 30px); font-style: italic; font-weight: 300; color: var(--teal); border-left: 2px solid var(--teal); padding-left: 28px; margin: 48px 0; line-height: 1.5; }
+    .divider { height: 1px; background: var(--border); margin: 0 48px; }
+
+    /* ROLE BREAKDOWN */
+    .role-section { background: var(--bg-2); padding: 100px 48px; border-top: 1px solid var(--border); }
+    .role-section .inner { max-width: 1000px; margin: 0 auto; }
+    .role-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); margin-top: 52px; }
+    .role-col { background: var(--bg-2); padding: 48px 40px; }
+    .role-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .role-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: var(--text); margin-bottom: 16px; }
+    .role-items { list-style: none; }
+    .role-items li { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; color: rgba(237,232,223,0.65); padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    .role-items li:last-child { border-bottom: none; }
+    .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    .dot-muted { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+
+    /* VIDEOS SECTION */
+    .videos-section { padding: 100px 48px; }
+    .videos-section .inner { max-width: 1100px; margin: 0 auto; }
+    .shorts-grid {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .shorts-grid iframe {
+      width: 100%; aspect-ratio: 9/16;
+      border: none; border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+    }
+
+    /* SCOPE NOTE */
+    .scope-note {
+      background: var(--bg-2); border-top: 1px solid var(--border);
+      padding: 80px 48px;
+    }
+    .scope-note .inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .scope-note blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 32px); font-style: italic; font-weight: 300;
+      color: var(--text); line-height: 1.45; margin-bottom: 24px;
+    }
+    .scope-note cite { font-family: 'Syne', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); font-style: normal; }
+
+    /* CTA */
+    .cta-section { padding: 120px 48px; text-align: center; border-top: 1px solid var(--border); }
+    .cta-section h2 { font-size: clamp(48px, 8vw, 96px); margin-bottom: 20px; }
+    .cta-sub { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; font-weight: 300; color: rgba(237,232,223,0.5); margin-bottom: 48px; }
+    .cta-btn { display: inline-block; padding: 16px 48px; border: 1px solid var(--teal); color: var(--text); font-family: 'Syne', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.25s, color 0.25s; }
+    .cta-btn:hover { background: var(--teal); color: #080808; }
+
+    /* FOOTER */
+    footer { padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
+    .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: var(--muted); }
+    .footer-copy { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) { .shorts-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .hero-content { padding: 0 24px 64px; }
+      .meta-strip { grid-template-columns: repeat(2, 1fr); }
+      .meta-item { padding: 20px 24px; }
+      .section-sm { padding: 72px 24px; }
+      .divider { margin: 0 24px; }
+      .role-section, .videos-section, .scope-note, .cta-section { padding: 72px 24px; }
+      .role-row { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 600px) { .shorts-grid { grid-template-columns: 1fr; } }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: 0.12s; }
+    .reveal-d2 { transition-delay: 0.24s; }
+    .reveal-d3 { transition-delay: 0.36s; }
+    .reveal-d4 { transition-delay: 0.48s; }
+  </style>
+</head>
+<body>
+
+<div id="grain"></div>
+
+<nav>
+  <a href="index.html" class="nav-back">
+    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+    </svg>
+    Back to Portfolio
+  </a>
+  <a href="index.html" class="nav-name">Iliass Touijri</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-waves">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Client Work · 2025</div>
+    <h1 class="hero-title">SADA<br>PLATFORM</h1>
+    <p class="hero-sub">A Moroccan podcast platform brought the audio. I brought the vision — turning spoken stories into cinematic short-form content with AI.</p>
+  </div>
+</section>
+
+<!-- META -->
+<div class="meta-strip">
+  <div class="meta-item"><div class="meta-label">Client</div><div class="meta-value">Sada Platform</div></div>
+  <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">Motion · Storytelling</div></div>
+  <div class="meta-item"><div class="meta-label">Format</div><div class="meta-value">Shorts · Social</div></div>
+  <div class="meta-item"><div class="meta-label">Episodes Produced</div><div class="meta-value">8 Videos</div></div>
+</div>
+
+<!-- BRIEF -->
+<div class="section-sm reveal">
+  <div class="eyebrow">The Brief</div>
+  <h2>Audio exists. Now make it visible.</h2>
+  <p class="body-text">
+    Sada is a Moroccan podcast platform built around audio storytelling — long-form content that deserves to live beyond the podcast player. Their challenge: how do you bring audio to social media in a way that actually stops people from scrolling?
+  </p>
+  <p class="body-text">
+    They came with the scripts. They came with the audio. They needed someone who could take those raw ingredients and turn them into visual content that matched the depth of what was being said.
+  </p>
+  <div class="highlight-line">
+    The audio tells the story. The visuals make you feel it.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ROLE BREAKDOWN -->
+<div class="role-section">
+  <div class="inner">
+    <div class="eyebrow reveal">The Division of Work</div>
+    <h2 class="reveal">They brought the story.<br>I built the world around it.</h2>
+    <div class="role-row">
+      <div class="role-col reveal">
+        <div class="role-label">Sada provided</div>
+        <div class="role-title">The Foundation</div>
+        <ul class="role-items">
+          <li><span class="dot-muted"></span>Podcast scripts</li>
+          <li><span class="dot-muted"></span>Recorded audio</li>
+          <li><span class="dot-muted"></span>Episode topics & narrative arc</li>
+        </ul>
+      </div>
+      <div class="role-col reveal reveal-d1">
+        <div class="role-label">Iliass delivered</div>
+        <div class="role-title">Everything Visual</div>
+        <ul class="role-items">
+          <li><span class="dot"></span>Visual concept & art direction</li>
+          <li><span class="dot"></span>AI-generated imagery & motion</li>
+          <li><span class="dot"></span>Short-form video editing & pacing</li>
+          <li><span class="dot"></span>Social-native formatting (Shorts)</li>
+          <li><span class="dot"></span>8 complete episodes produced</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPROACH -->
+<div class="section-sm reveal">
+  <div class="eyebrow">The Approach</div>
+  <h2>Every episode, a different world.</h2>
+  <p class="body-text">
+    Podcast content lives or dies by how it's packaged for short-form. The challenge isn't just making things look nice — it's finding the visual language that serves the story without competing with it. For each episode, the imagery had to feel like it was born from the words, not placed on top of them.
+  </p>
+  <p class="body-text">
+    Working entirely with AI, I created distinct visual environments for each episode — matching tone, pacing, and mood to the audio. The result is a body of work where no two episodes look the same, but all of them feel like Sada.
+  </p>
+</div>
+
+<!-- VIDEOS -->
+<div class="videos-section">
+  <div class="inner">
+    <div class="eyebrow reveal">The Episodes</div>
+    <h2 class="reveal">8 stories.<br>8 visual worlds.</h2>
+    <div class="shorts-grid reveal">
+      <iframe src="https://www.youtube.com/embed/yJ8ohjHxx-E?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 1"></iframe>
+      <iframe src="https://www.youtube.com/embed/nR2t803ANUQ?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 2"></iframe>
+      <iframe src="https://www.youtube.com/embed/u-MU6hm_iEA?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 3"></iframe>
+      <iframe src="https://www.youtube.com/embed/SFk-h4rDs9k?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 4"></iframe>
+      <iframe src="https://www.youtube.com/embed/b5cvyV0fFfI?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 5"></iframe>
+      <iframe src="https://www.youtube.com/embed/JAgo6b-fPjs?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 6"></iframe>
+      <iframe src="https://www.youtube.com/embed/ja03CxwSSdA?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 7"></iframe>
+      <iframe src="https://www.youtube.com/embed/UIyjOYHyUcM?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Sada episode 8"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- SCOPE NOTE -->
+<div class="scope-note">
+  <div class="inner">
+    <blockquote class="reveal">
+      "You don't need a production crew to make content that looks like it had one."
+    </blockquote>
+    <cite class="reveal">— Iliass Touijri</cite>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="eyebrow reveal" style="justify-content:center;">Have Content. Need Visuals?</div>
+  <h2 class="reveal">Audio. Scripts.<br>Ideas. Anything.</h2>
+  <p class="cta-sub reveal">
+    Bring what you have. I'll turn it into something people watch.
+  </p>
+  <a href="index.html#contact" class="cta-btn reveal">Start a Project</a>
+</div>
+
+<footer>
+  <div class="footer-name">Iliass Touijri</div>
+  <div class="footer-copy">© 2025 · AI Creative Director · Morocco</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
