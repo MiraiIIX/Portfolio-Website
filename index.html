@@ -307,7 +307,7 @@
     .hero-cta  { opacity: 0; }
     .contact-link { opacity: 0; }
     .hero-socials { opacity: 0; }
-    .social-links.hero-socials { margin-top: 88px; }
+    .social-links.hero-socials { margin-top: 32px; }
 
     /* ─── LINE GLOW (for WORLDS / CREATE) ────────────────── */
     .line-glow {
@@ -592,6 +592,25 @@
       z-index: 10;
     }
     .card:hover::before { transform: scaleX(1); }
+
+    /* case study badge — only on cards with data-link */
+    .card[data-link]::after {
+      content: 'CASE STUDY ↗';
+      position: absolute; top: 16px; right: 16px; z-index: 10;
+      font-family: 'Syne', sans-serif;
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 6px 12px; border-radius: 100px;
+      backdrop-filter: blur(10px);
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+    .card[data-link]:hover::after {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
 
     /* card info */
     .card-info {
@@ -1017,7 +1036,7 @@
       .badge-2 { left: 0; bottom: 16px; font-size: 10px; padding: 8px 12px; }
       .hero-title { font-size: clamp(64px, 17vw, 96px); margin-bottom: 20px; }
       .hero-sub { font-size: 15px; margin-bottom: 36px; }
-      .social-links.hero-socials { margin-top: 56px; }
+      .social-links.hero-socials { margin-top: 28px; }
       .scroll-hint { display: none; }
 
       /* Sections */
