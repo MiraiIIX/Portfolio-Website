@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Void Walkers — Case Study · Iliass Touijri</title>
+  <meta name="description" content="Void Walkers jersey release campaign — a full AI-generated creative campaign built from two reference images." />
+
+  <link rel="icon" type="image/png" href="Profile.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red:    #ff2d3a;
+      --red-2:  #d91525;
+      --gold:   #c9a84c;
+      --bg:     #080808;
+      --bg-2:   #0d0d0d;
+      --bg-3:   #131313;
+      --text:   #ede8df;
+      --muted:  #5a5550;
+      --border: rgba(255,255,255,0.065);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--red-2) var(--bg-2);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── GRAIN ─────────────────────────────────────────── */
+    #grain {
+      position: fixed; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.042; pointer-events: none; z-index: 9000;
+      animation: grain 7s steps(10) infinite;
+    }
+    @keyframes grain {
+      0%  { transform: translate(0,0); }      10% { transform: translate(-4%,-9%); }
+      20% { transform: translate(-14%,4%); }  30% { transform: translate(6%,-24%); }
+      40% { transform: translate(-4%,24%); }  50% { transform: translate(-14%,9%); }
+      60% { transform: translate(14%,0%); }   70% { transform: translate(0%,14%); }
+      80% { transform: translate(3%,34%); }   90% { transform: translate(-9%,9%); }
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 48px;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(0px);
+    }
+    .nav-back {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--muted); font-size: 11px; letter-spacing: 0.15em;
+      text-decoration: none; text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; letter-spacing: 0.1em;
+      color: var(--text); text-decoration: none;
+    }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45);
+      transform: scale(1.04);
+      animation: hero-drift 12s ease-in-out infinite alternate;
+    }
+    @keyframes hero-drift {
+      from { transform: scale(1.04) translateY(0); }
+      to   { transform: scale(1.08) translateY(-1%); }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.3) 50%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 48px 72px;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--red);
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 12vw, 140px);
+      line-height: 0.92; letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-style: italic; font-weight: 300;
+      color: rgba(237,232,223,0.65);
+      max-width: 560px; line-height: 1.5;
+    }
+
+    /* ── META STRIP ────────────────────────────────────── */
+    .meta-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .meta-item {
+      padding: 32px 48px;
+      border-right: 1px solid var(--border);
+    }
+    .meta-item:last-child { border-right: none; }
+    .meta-label {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .meta-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px; letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    /* ── SECTIONS ──────────────────────────────────────── */
+    .section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 48px;
+    }
+    .section-sm {
+      max-width: 720px; margin: 0 auto;
+      padding: 80px 48px;
+    }
+    .eyebrow {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .eyebrow::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--red);
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: 0.03em; line-height: 1;
+      color: var(--text); margin-bottom: 32px;
+    }
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 300; line-height: 1.8;
+      color: rgba(237,232,223,0.8);
+    }
+    .body-text + .body-text { margin-top: 20px; }
+
+    .highlight-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 30px);
+      font-style: italic; font-weight: 300;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+      padding-left: 28px;
+      margin: 48px 0;
+      line-height: 1.5;
+    }
+
+    /* ── DIVIDER ───────────────────────────────────────── */
+    .divider {
+      height: 1px; background: var(--border);
+      margin: 0 48px;
+    }
+
+    /* ── VIDEO SECTION ─────────────────────────────────── */
+    .video-section {
+      background: var(--bg-2);
+      padding: 100px 48px;
+    }
+    .video-section .inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .video-wrap {
+      margin-top: 52px;
+      display: flex; justify-content: center;
+    }
+    .video-wrap iframe {
+      height: 75vh; max-height: 700px;
+      aspect-ratio: 9/16;
+      border: none; border-radius: 12px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px var(--border);
+    }
+
+    /* ── GALLERY ───────────────────────────────────────── */
+    .gallery-section {
+      padding: 100px 48px;
+    }
+    .gallery-section .inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .gallery-grid {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .gallery-grid img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 4px;
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1), filter 0.4s;
+      filter: brightness(0.9);
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+      filter: brightness(1);
+    }
+    .gallery-grid img:first-child {
+      grid-column: span 2; aspect-ratio: 16/9;
+    }
+    .gallery-grid img:nth-child(5) {
+      grid-column: span 2; aspect-ratio: 16/9;
+    }
+
+    /* ── STAT ROW ──────────────────────────────────────── */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 60px 0;
+    }
+    .stat {
+      background: var(--bg-2);
+      padding: 40px 36px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 56px; letter-spacing: 0.04em;
+      color: var(--red); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-desc {
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── CTA ───────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 120px 48px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: clamp(48px, 8vw, 96px);
+      margin-bottom: 20px;
+    }
+    .cta-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-style: italic; font-weight: 300;
+      color: rgba(237,232,223,0.55);
+      margin-bottom: 48px;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 48px;
+      border: 1px solid var(--red);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+    .cta-btn:hover {
+      background: var(--red);
+      color: #fff;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    footer {
+      padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .footer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px; letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .footer-copy {
+      font-size: 11px; letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* ── LIGHTBOX ──────────────────────────────────────── */
+    #glb {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.93);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #glb.open { opacity: 1; pointer-events: all; }
+    #glb img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    #glb-close {
+      position: absolute; top: 24px; right: 32px;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: 1px solid var(--border);
+      color: var(--text); font-size: 20px; cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    #glb-close:hover { border-color: var(--red); color: var(--red); }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .hero-content { padding: 0 24px 56px; }
+      .meta-strip { grid-template-columns: repeat(2, 1fr); }
+      .meta-item { padding: 24px; }
+      .section, .section-sm { padding: 72px 24px; }
+      .divider { margin: 0 24px; }
+      .video-section, .gallery-section, .cta-section { padding: 72px 24px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid img:first-child { grid-column: span 2; }
+      .gallery-grid img:nth-child(5) { grid-column: 1; }
+      .stat-row { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .meta-strip { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid img:first-child,
+      .gallery-grid img:nth-child(5) { grid-column: 1; aspect-ratio: 3/4; }
+    }
+
+    /* ── SCROLL REVEAL ─────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<div id="grain"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-back">
+    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+    </svg>
+    Back to Portfolio
+  </a>
+  <a href="index.html" class="nav-name">Iliass Touijri</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img"
+       src="projects/void walkers/magnific_cinematic-editorial-fashi_2893223945.jpg"
+       alt="Void Walkers campaign hero" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Case Study · 2025</div>
+    <h1 class="hero-title">VOID<br>WALKERS</h1>
+    <p class="hero-sub">A full jersey release campaign and teaser — built entirely with AI from two product reference images.</p>
+  </div>
+</section>
+
+<!-- META STRIP -->
+<div class="meta-strip">
+  <div class="meta-item">
+    <div class="meta-label">Client</div>
+    <div class="meta-value">Void Walkers</div>
+  </div>
+  <div class="meta-item">
+    <div class="meta-label">Type</div>
+    <div class="meta-value">Esport Campaign</div>
+  </div>
+  <div class="meta-item">
+    <div class="meta-label">Deliverables</div>
+    <div class="meta-value">Teaser · Campaign</div>
+  </div>
+  <div class="meta-item">
+    <div class="meta-label">Medium</div>
+    <div class="meta-value">100% AI</div>
+  </div>
+</div>
+
+<!-- BRIEF -->
+<div class="section-sm reveal">
+  <div class="eyebrow">The Brief</div>
+  <h2>Launch the jersey. Make it land.</h2>
+  <p class="body-text">
+    Void Walkers, a rising Moroccan esport team, came with a clear vision: they needed their new jersey to hit. Not just exist — but make noise. The ask was a full creative package: a campaign built to perform on social, and a teaser that would stop the scroll the moment it appeared.
+  </p>
+  <p class="body-text">
+    They gave me two product reference images. That was it. The rest was creative direction.
+  </p>
+</div>
+
+<div class="divider"></div>
+
+<!-- APPROACH -->
+<div class="section-sm reveal">
+  <div class="eyebrow">The Approach</div>
+  <h2>Two images. An entire world.</h2>
+  <p class="body-text">
+    From those two reference images, I built a complete creative universe. No studio. No location scouts. No production crew. Every visual — the lighting setups, the atmospheric compositions, the cinematic color grading — was conceived and executed through AI-driven creative direction.
+  </p>
+
+  <div class="highlight-line">
+    A full esport jersey campaign, delivered from two photos. Entirely through AI.
+  </div>
+
+  <p class="body-text">
+    The teaser was treated like a proper short film — shot-listed, paced deliberately, and formatted natively for Instagram Reels. The campaign photos were art directed to feel editorial rather than promotional: the kind of imagery that makes you stop and ask where it was shot.
+  </p>
+</div>
+
+<div class="stat-row reveal">
+  <div class="stat">
+    <div class="stat-num">2</div>
+    <div class="stat-desc">Reference images provided</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-desc">Campaign visuals delivered</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-desc">Studio hours needed</div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="video-section">
+  <div class="inner">
+    <div class="eyebrow reveal">The Teaser</div>
+    <h2 class="reveal">Built for the feed. Designed to land.</h2>
+    <div class="video-wrap reveal">
+      <iframe
+        src="https://www.youtube.com/embed/hoaZMTw5HW4?rel=0"
+        allow="fullscreen"
+        allowfullscreen
+        loading="lazy"
+        title="Void Walkers Jersey Teaser">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="inner">
+    <div class="eyebrow reveal">The Campaign</div>
+    <h2 class="reveal">Editorial. Cinematic. AI-crafted.</h2>
+    <div class="gallery-grid reveal">
+      <img src="projects/void walkers/freepik_cinematic-campaign-shot-t_2861350382.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/magnific_cinematic-editorial-produ_2893442890.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/freepik_cinematic-campaign-shot-t_2861350391.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/magnific_img3-the-guy-turned-aroun_2893219576.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/magnific_cinematic-editorial-produ_2893449535.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/magnific_surreal-cinematic-editori_2893450248.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/freepik_cinematic-editorial-photo_2861334667.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/magnific_cinematic-editorial-produ_2893450468.jpg" alt="Campaign shot" loading="lazy" />
+      <img src="projects/void walkers/2k.jpg" alt="Campaign shot" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="eyebrow reveal" style="justify-content:center;">What This Means For You</div>
+  <h2 class="reveal">Your campaign.<br>No studio required.</h2>
+  <p class="cta-sub reveal">
+    If you have a product and a vision, that's enough to start.<br>
+    Everything else is creative direction.
+  </p>
+  <a href="index.html#contact" class="cta-btn reveal">Start a Project</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Iliass Touijri</div>
+  <div class="footer-copy">© 2025 · AI Creative Director · Morocco</div>
+</footer>
+
+<!-- IMAGE LIGHTBOX -->
+<div id="glb">
+  <button id="glb-close">✕</button>
+  <img id="glb-img" src="" alt="" />
+</div>
+
+<script>
+  // scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // gallery lightbox
+  const glb = document.getElementById('glb');
+  const glbImg = document.getElementById('glb-img');
+  document.querySelectorAll('.gallery-grid img').forEach(img => {
+    img.addEventListener('click', () => {
+      glbImg.src = img.src;
+      glb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.getElementById('glb-close').addEventListener('click', () => {
+    glb.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  glb.addEventListener('click', e => { if (e.target === glb) { glb.classList.remove('open'); document.body.style.overflow = ''; } });
+</script>
+</body>
+</html>

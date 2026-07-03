@@ -1333,7 +1333,7 @@
       </article>
 
       <!-- VOID WALKERS -->
-      <article class="card card-voidwalkers gsap-hidden" tabindex="0" aria-label="Void Walkers Project" data-project="voidwalkers">
+      <article class="card card-voidwalkers gsap-hidden" tabindex="0" aria-label="Void Walkers Project" data-project="voidwalkers" data-link="void-walkers.html">
         <div class="card-media">
           <img src="projects/void walkers/2k.jpg" alt="Void Walkers esport jersey campaign" loading="lazy" />
         </div>
@@ -1350,7 +1350,7 @@
       </article>
 
       <!-- AISHA -->
-      <article class="card card-aisha gsap-hidden" tabindex="0" aria-label="Aisha Confiture" data-project="aisha">
+      <article class="card card-aisha gsap-hidden" tabindex="0" aria-label="Aisha Confiture" data-project="aisha" data-link="aisha.html">
         <div class="card-media">
           <img src="https://img.youtube.com/vi/C3s4QUprjjs/maxresdefault.jpg" alt="Aisha confiture product ad" loading="lazy" />
         </div>
@@ -1934,12 +1934,11 @@
   // wire up cards
   document.querySelectorAll('.card[data-project]').forEach(card => {
     card.style.cursor = 'pointer';
-    card.addEventListener('click', () => openProject(card.dataset.project));
+    const link = card.dataset.link;
+    const handler = () => link ? window.location.href = link : openProject(card.dataset.project);
+    card.addEventListener('click', handler);
     card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openProject(card.dataset.project);
-      }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handler(); }
     });
   });
 })();
