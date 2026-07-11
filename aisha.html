@@ -4,493 +4,416 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aisha — Case Study · Iliass Touijri</title>
-  <meta name="description" content="Aisha confiture — a full storytelling product ad with 3D animation, crafted from a single creative brief." />
+  <meta name="description" content="Aisha — a storytelling product ad with cinematic 3D animation for a Moroccan confiture brand." />
 
   <link rel="icon" type="image/png" href="Profile.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── STUDIO EDITORIAL — case study template ─────────── */
     :root {
-      --red:    #ff2d3a;
-      --red-2:  #d91525;
-      --gold:   #c9a84c;
-      --bg:     #080808;
-      --bg-2:   #0d0d0d;
-      --bg-3:   #131313;
-      --text:   #ede8df;
-      --muted:  #5a5550;
-      --border: rgba(255,255,255,0.065);
-
-      /* Aisha accent — warm amber */
-      --amber:  #e8a04a;
-      --amber-glow: rgba(232,160,74,0.2);
+      --paper:      #f2ecdf;
+      --paper-deep: #eae2d1;
+      --ink:        #201a14;
+      --ink-soft:   #4c4238;
+      --ink-faint:  #6f6355;
+      --clay:       #b0431f;
+      --clay-soft:  #d96b43;
+      --rule:       rgba(32, 26, 20, 0.16);
+      --rule-soft:  rgba(32, 26, 20, 0.09);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans:  'Satoshi', 'Helvetica Neue', sans-serif;
+      --mono:  'Spline Sans Mono', 'Courier New', monospace;
+      --gutter: clamp(20px, 4.5vw, 72px);
+      --max-w: 1440px;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-      scrollbar-color: var(--amber) var(--bg-2);
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Syne', sans-serif;
-      overflow-x: hidden;
-      line-height: 1.7;
+      background: var(--paper); color: var(--ink);
+      font-family: var(--sans); font-size: 17px; line-height: 1.7;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
+    ::selection { background: var(--clay); color: var(--paper); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
 
-    /* ── GRAIN ─────────────────────────────────────────── */
     #grain {
-      position: fixed; top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      opacity: 0.042; pointer-events: none; z-index: 9000;
-      animation: grain 7s steps(10) infinite;
-    }
-    @keyframes grain {
-      0%  { transform: translate(0,0); }      10% { transform: translate(-4%,-9%); }
-      20% { transform: translate(-14%,4%); }  30% { transform: translate(6%,-24%); }
-      40% { transform: translate(-4%,24%); }  50% { transform: translate(-14%,9%); }
-      60% { transform: translate(14%,0%); }   70% { transform: translate(0%,14%); }
-      80% { transform: translate(3%,34%); }   90% { transform: translate(-9%,9%); }
+      position: fixed; inset: -50%; width: 200%; height: 200%;
+      pointer-events: none; z-index: 60; opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
     }
 
-    /* ── NAV ───────────────────────────────────────────── */
+    .label {
+      font-family: var(--mono); font-size: 11.5px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .label .yaz { color: var(--clay); font-family: var(--sans); }
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 48px;
-      background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%);
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 18px var(--gutter);
+      display: flex; align-items: baseline; justify-content: space-between; gap: 20px;
     }
     .nav-back {
-      display: flex; align-items: center; gap: 10px;
-      color: var(--muted); font-size: 11px; letter-spacing: 0.15em;
-      text-decoration: none; text-transform: uppercase;
-      transition: color 0.25s;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--mono); font-size: 12px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft); transition: color 0.25s ease;
     }
-    .nav-back:hover { color: var(--text); }
-    .nav-back svg { width: 16px; height: 16px; }
-    .nav-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px; letter-spacing: 0.1em;
-      color: var(--text); text-decoration: none;
-    }
+    .nav-back svg { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .nav-back:hover { color: var(--clay); }
+    .nav-back:hover svg { transform: translateX(-4px); }
+    .nav-logo { font-family: var(--serif); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+    .nav-logo em { font-style: italic; font-weight: 400; color: var(--clay); }
 
-    /* ── HERO ──────────────────────────────────────────── */
-    @keyframes hero-drift {
-      0%   { transform: scale(1)    translate(0,0); }
-      100% { transform: scale(1.06) translate(-1%,-1%); }
+    /* HERO */
+    .cs-hero { padding-top: clamp(120px, 18vh, 190px); }
+    .cs-kicker { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(20px, 3vh, 36px); }
+    .cs-kicker .k-line { width: 44px; height: 1px; background: var(--clay); }
+    h1 {
+      font-family: var(--serif); font-weight: 340;
+      font-size: clamp(48px, 8vw, 116px);
+      line-height: 0.98; letter-spacing: -0.03em; text-wrap: balance;
     }
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex; align-items: flex-end;
-      overflow: hidden;
-      background: #05060a;
+    h1 .it { font-style: italic; font-weight: 380; color: var(--clay); }
+    .cs-sub {
+      max-width: 52ch; margin-top: clamp(20px, 3vh, 34px);
+      font-size: clamp(16px, 1.35vw, 19px); line-height: 1.75; color: var(--ink-soft);
     }
-    .hero-photo {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      animation: hero-drift 18s ease-in-out infinite alternate;
-    }
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background:
-        linear-gradient(to top, rgba(5,6,10,0.95) 0%, rgba(5,6,10,0.5) 45%, rgba(5,6,10,0.2) 100%),
-        radial-gradient(ellipse 60% 50% at 65% 40%, rgba(232,160,74,0.12) 0%, transparent 70%);
-    }
-    /* Decorative large letter */
-    .hero-letter {
-      position: absolute; z-index: 2;
-      right: -2vw; top: 50%; transform: translateY(-55%);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(280px, 40vw, 500px);
-      color: rgba(232,160,74,0.06);
-      line-height: 1; user-select: none; pointer-events: none;
-      letter-spacing: -0.02em;
-    }
-    .hero-content {
-      position: relative; z-index: 3;
-      padding: 0 48px 80px;
-      max-width: 860px;
-    }
-    .hero-eyebrow {
-      font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--amber); margin-bottom: 20px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: block;
-      width: 32px; height: 1px; background: var(--amber);
-    }
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(96px, 18vw, 200px);
-      line-height: 0.88; letter-spacing: 0.02em;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-    .hero-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(20px, 2.5vw, 26px);
-      font-style: italic; font-weight: 300;
-      color: rgba(237,232,223,0.6);
-      max-width: 520px; line-height: 1.55;
-    }
+    .cs-sub em { font-family: var(--serif); font-style: italic; color: var(--ink); }
 
-    /* ── META STRIP ────────────────────────────────────── */
+    /* COVER PLATE */
+    .cs-cover { margin-top: clamp(36px, 6vh, 64px); }
+    .cs-cover .frame { overflow: hidden; background: var(--paper-deep); }
+    .cs-cover img { width: 100%; height: clamp(320px, 68vh, 640px); object-fit: cover; }
+    .cs-cover figcaption {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 12px 2px 0;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+    }
+    .cs-cover figcaption .yaz { color: var(--clay); font-size: 13px; }
+
+    /* META STRIP */
     .meta-strip {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      margin-top: clamp(36px, 6vh, 60px);
+      border-top: 1px solid var(--rule);
+      display: grid; grid-template-columns: repeat(2, 1fr);
     }
-    .meta-item {
-      padding: 32px 48px;
-      border-right: 1px solid var(--border);
+    @media (min-width: 720px) { .meta-strip { grid-template-columns: repeat(4, 1fr); } }
+    .meta-cell { padding: 18px 18px 26px 0; border-right: 1px solid var(--rule-soft); }
+    .meta-cell:last-child { border-right: none; }
+    .meta-cell + .meta-cell { padding-left: 22px; }
+    .meta-cell .m-label {
+      font-family: var(--mono); font-size: 10.5px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-faint); margin-bottom: 6px;
     }
-    .meta-item:last-child { border-right: none; }
-    .meta-label {
-      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 8px;
+    .meta-cell .m-value { font-family: var(--serif); font-size: clamp(17px, 1.6vw, 22px); font-weight: 500; }
+    .meta-cell .m-value em { font-style: italic; font-weight: 400; color: var(--clay); }
+
+    /* PROSE SECTIONS */
+    .sec { padding-top: clamp(64px, 10vh, 120px); }
+    .sec-grid { display: grid; grid-template-columns: 1fr; gap: 26px; }
+    @media (min-width: 900px) {
+      .sec-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(40px, 6vw, 110px); }
     }
-    .meta-value {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px; letter-spacing: 0.06em;
-      color: var(--text);
+    .cs-h2 {
+      font-family: var(--serif); font-weight: 380;
+      font-size: clamp(28px, 3.4vw, 48px);
+      line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance;
+      margin-top: 16px;
+    }
+    .cs-h2 em { font-style: italic; color: var(--clay); }
+    .body-text { color: var(--ink-soft); max-width: 62ch; }
+    .body-text + .body-text { margin-top: 18px; }
+    .body-text strong { color: var(--ink); font-weight: 500; }
+    .pull {
+      font-family: var(--serif); font-style: italic; font-weight: 360;
+      font-size: clamp(20px, 2.2vw, 28px); line-height: 1.45;
+      color: var(--clay);
+      border-left: 2px solid var(--clay);
+      padding-left: 24px; margin: 34px 0;
+      max-width: 30ch;
     }
 
-    /* ── SECTIONS ──────────────────────────────────────── */
-    .section-sm {
-      max-width: 720px; margin: 0 auto;
-      padding: 100px 48px;
+    /* RULED TWO-COLUMN (roles / compare) */
+    .cols-2 { display: grid; grid-template-columns: 1fr; gap: 0 clamp(40px, 5vw, 80px); margin-top: clamp(36px, 5vh, 56px); }
+    @media (min-width: 800px) { .cols-2 { grid-template-columns: 1fr 1fr; } }
+    .col-block { border-top: 1px solid var(--rule); padding-top: 20px; padding-bottom: 34px; }
+    .col-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+    .col-title { font-family: var(--serif); font-weight: 460; font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.01em; margin-bottom: 14px; }
+    .col-items { list-style: none; }
+    .col-items li {
+      display: flex; align-items: baseline; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--rule-soft);
+      color: var(--ink-soft); font-size: 15.5px;
     }
-    .eyebrow {
-      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--amber); margin-bottom: 24px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .eyebrow::before {
-      content: ''; display: block;
-      width: 24px; height: 1px; background: var(--amber);
-    }
-    h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 6vw, 72px);
-      letter-spacing: 0.03em; line-height: 1;
-      color: var(--text); margin-bottom: 32px;
-    }
-    .body-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(18px, 2vw, 22px);
-      font-weight: 300; line-height: 1.85;
-      color: rgba(237,232,223,0.8);
-    }
-    .body-text + .body-text { margin-top: 20px; }
+    .col-items li:last-child { border-bottom: none; }
+    .col-items .yaz { color: var(--clay); font-size: 13px; flex-shrink: 0; }
+    .col-items .dash { color: var(--ink-faint); flex-shrink: 0; }
 
-    .highlight-line {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 3vw, 30px);
-      font-style: italic; font-weight: 300;
-      color: var(--amber);
-      border-left: 2px solid var(--amber);
-      padding-left: 28px;
-      margin: 48px 0;
-      line-height: 1.5;
-    }
+    /* VIDEO GRIDS */
+    .shorts-grid { margin-top: clamp(36px, 5vh, 56px); display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (min-width: 1000px) { .shorts-grid { grid-template-columns: repeat(4, 1fr); } }
+    .shorts-grid iframe { width: 100%; aspect-ratio: 9/16; border: 1px solid var(--rule); background: var(--paper-deep); }
+    .video-wrap { margin-top: clamp(36px, 5vh, 56px); display: flex; justify-content: center; }
+    .video-wrap iframe { height: 72vh; max-height: 700px; aspect-ratio: 9/16; border: 1px solid var(--rule); background: var(--paper-deep); }
+    .video-wrap.wide iframe { width: 100%; max-width: 980px; height: auto; aspect-ratio: 16/9; }
 
-    .divider {
-      height: 1px; background: var(--border);
-      margin: 0 48px;
+    /* QUOTE BAND */
+    .quote-band { margin-top: clamp(64px, 10vh, 120px); border-top: 1px solid var(--rule); }
+    .quote-band .inner { padding: clamp(48px, 8vh, 90px) 0; max-width: 820px; }
+    .quote-band blockquote {
+      font-family: var(--serif); font-weight: 340; font-style: italic;
+      font-size: clamp(24px, 3.2vw, 44px); line-height: 1.25; letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+    .quote-band blockquote em { color: var(--clay); }
+    .quote-band cite {
+      display: block; margin-top: 20px; font-style: normal;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint);
     }
 
-    /* ── PROCESS STEPS ─────────────────────────────────── */
-    .process-section {
-      background: var(--bg-2);
-      padding: 100px 48px;
+    /* NEXT + CTA (ink) */
+    .cs-end { margin-top: clamp(64px, 10vh, 130px); background: var(--ink); color: var(--paper); }
+    .cs-end .wrap { padding-top: clamp(64px, 10vh, 110px); padding-bottom: clamp(56px, 9vh, 90px); }
+    .end-kicker { display: flex; align-items: center; gap: 14px; color: rgba(242,236,223,0.5); }
+    .end-kicker .k-line { width: 44px; height: 1px; background: var(--clay); }
+    .end-title {
+      font-family: var(--serif); font-weight: 320;
+      font-size: clamp(36px, 5.6vw, 84px);
+      line-height: 1.04; letter-spacing: -0.03em;
+      margin: clamp(20px, 3.5vh, 36px) 0 clamp(26px, 4vh, 42px);
+      text-wrap: balance; max-width: 18ch;
     }
-    .process-section .inner {
-      max-width: 1000px; margin: 0 auto;
+    .end-title em { font-style: italic; color: var(--clay-soft); font-weight: 360; }
+    .end-mail {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: var(--mono); font-size: clamp(13px, 1.3vw, 15px);
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper);
+      border-bottom: 1px solid rgba(242,236,223,0.4); padding-bottom: 6px;
+      transition: color 0.3s ease, border-color 0.3s ease;
     }
-    .process-steps {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; margin-top: 56px;
-      background: var(--border);
+    .end-mail:hover { color: var(--clay-soft); border-color: var(--clay-soft); }
+    .next-link {
+      margin-top: clamp(56px, 9vh, 90px);
+      padding-top: 26px;
+      border-top: 1px solid rgba(242,236,223,0.16);
+      display: flex; justify-content: space-between; align-items: baseline; gap: 20px;
+      flex-wrap: wrap;
     }
-    .step {
-      background: var(--bg-2);
-      padding: 48px 36px;
+    .next-link .n-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,236,223,0.45); }
+    .next-link a {
+      font-family: var(--serif); font-weight: 380;
+      font-size: clamp(24px, 3vw, 40px); letter-spacing: -0.02em;
+      display: inline-flex; align-items: center; gap: 16px;
+      transition: color 0.3s ease;
     }
-    .step-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px; letter-spacing: 0.04em;
-      color: var(--amber); opacity: 0.4;
-      line-height: 1; margin-bottom: 16px;
-    }
-    .step-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; letter-spacing: 0.08em;
-      color: var(--text); margin-bottom: 12px;
-    }
-    .step-body {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px; font-weight: 300;
-      color: rgba(237,232,223,0.6); line-height: 1.7;
-    }
-
-    /* ── VIDEO ─────────────────────────────────────────── */
-    .video-section {
-      padding: 100px 48px;
-    }
-    .video-section .inner {
-      max-width: 1100px; margin: 0 auto;
-    }
-    .video-wrap {
-      margin-top: 52px;
-      display: flex; justify-content: center;
-    }
-    .video-wrap iframe {
-      height: 75vh; max-height: 720px;
-      aspect-ratio: 9/16;
-      border: none; border-radius: 12px;
-      box-shadow:
-        0 60px 120px rgba(0,0,0,0.8),
-        0 0 0 1px var(--border),
-        0 0 80px var(--amber-glow);
+    .next-link a:hover { color: var(--clay-soft); font-style: italic; }
+    .footer-line {
+      margin-top: 40px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 30px;
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.13em; text-transform: uppercase; color: rgba(242,236,223,0.45);
     }
 
-    /* ── PHILOSOPHY ─────────────────────────────────────── */
-    .philosophy {
-      background: var(--bg-2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 80px 48px;
-      text-align: center;
-    }
-    .philosophy blockquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 4vw, 48px);
-      font-style: italic; font-weight: 300;
-      color: var(--text);
-      max-width: 780px; margin: 0 auto;
-      line-height: 1.4;
-    }
-    .philosophy cite {
-      display: block; margin-top: 24px;
-      font-family: 'Syne', sans-serif;
-      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--amber); font-style: normal;
-    }
-
-    /* ── CTA ───────────────────────────────────────────── */
-    .cta-section {
-      padding: 120px 48px;
-      text-align: center;
-    }
-    .cta-section h2 { font-size: clamp(48px, 8vw, 96px); margin-bottom: 20px; }
-    .cta-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px; font-style: italic; font-weight: 300;
-      color: rgba(237,232,223,0.5); margin-bottom: 48px;
-    }
-    .cta-btn {
-      display: inline-block; padding: 16px 48px;
-      border: 1px solid var(--amber); color: var(--text);
-      font-family: 'Syne', sans-serif;
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s, color 0.25s;
-    }
-    .cta-btn:hover { background: var(--amber); color: #080808; }
-
-    /* ── FOOTER ────────────────────────────────────────── */
-    footer {
-      padding: 32px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      border-top: 1px solid var(--border);
-    }
-    .footer-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px; letter-spacing: 0.1em; color: var(--muted);
-    }
-    .footer-copy { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
-
-    /* ── RESPONSIVE ────────────────────────────────────── */
-    @media (max-width: 900px) {
-      nav { padding: 20px 24px; }
-      .hero-content { padding: 0 24px 64px; }
-      .meta-strip { grid-template-columns: repeat(2, 1fr); }
-      .meta-item { padding: 24px; }
-      .section-sm { padding: 72px 24px; }
-      .divider { margin: 0 24px; }
-      .process-section, .video-section, .philosophy, .cta-section { padding: 72px 24px; }
-      .process-steps { grid-template-columns: 1fr; }
-      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
-    }
-
-    /* ── SCROLL REVEAL ─────────────────────────────────── */
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
-    }
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
     .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+  <style>
+    .steps { display: grid; grid-template-columns: 1fr; margin-top: clamp(36px, 5vh, 56px); border-top: 1px solid var(--rule); }
+    @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+    .step { padding: 22px 22px 34px 0; border-right: 1px solid var(--rule-soft); }
+    .step:last-child { border-right: none; }
+    .step + .step { padding-left: 24px; }
+    @media (max-width: 799px) { .step { border-right: none; border-bottom: 1px solid var(--rule-soft); padding-left: 0; } .step:last-child { border-bottom: none; } }
+    .step-num { font-family: var(--mono); font-size: 12px; color: var(--clay); letter-spacing: 0.14em; margin-bottom: 12px; }
+    .step-title { font-family: var(--serif); font-weight: 460; font-size: 20px; margin-bottom: 10px; }
+    .step-body { font-size: 15px; color: var(--ink-soft); }
   </style>
 </head>
 <body>
 
-<div id="grain"></div>
+<div id="grain" aria-hidden="true"></div>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-back">
-    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
-    </svg>
-    Back to Portfolio
-  </a>
-  <a href="index.html" class="nav-name">Iliass Touijri</a>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-back">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Index
+    </a>
+    <a href="index.html" class="nav-logo">Iliass <em>Touijri</em></a>
+    <a href="index.html#contact" class="nav-back">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <img class="hero-photo" src="projects/Aisha/aisha-hero.jpg" alt="Aisha confiture — cinematic product shot" />
-  <div class="hero-overlay"></div>
-  <div class="hero-letter">A</div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Case Study · 2025</div>
-    <h1 class="hero-title">AISHA</h1>
-    <p class="hero-sub">A storytelling product ad with cinematic 3D animation — built from a brief, a vision, and a conversation.</p>
+<header class="cs-hero wrap">
+  <div class="cs-kicker label">
+    <span class="k-line"></span>
+    № 02 <span class="yaz">ⵣ</span> Client work · 2025
+  </div>
+  <h1>Aisha: an ad that feels like <span class="it">a short film</span>.</h1>
+  <p class="cs-sub">
+    A storytelling product ad with cinematic 3D animation — built from a brief,
+    a vision, and <em>a conversation</em>.
+  </p>
+
+  <figure class="cs-cover">
+    <div class="frame"><img src="projects/Aisha/aisha-hero.jpg" alt="Aisha confiture jar with strawberry jam pouring in, studio-lit on deep red" /></div>
+    <figcaption>
+      <span>Fig. 01 — The pour</span>
+      <span class="yaz">ⵣ</span>
+    </figcaption>
+  </figure>
+
+  <div class="meta-strip">
+    <div class="meta-cell"><div class="m-label">Client</div><div class="m-value">Aisha</div></div>
+    <div class="meta-cell"><div class="m-label">Type</div><div class="m-value">Product <em>ad</em></div></div>
+    <div class="meta-cell"><div class="m-label">Deliverables</div><div class="m-value">Film · 3D animation</div></div>
+    <div class="meta-cell"><div class="m-label">Format</div><div class="m-value">Social · vertical</div></div>
+  </div>
+</header>
+
+<main>
+  <!-- BRIEF -->
+  <section class="sec wrap reveal">
+    <div class="sec-grid">
+      <div>
+        <div class="label">The brief <span class="yaz">ⵣ</span></div>
+        <h2 class="cs-h2">They wanted an ad. We built <em>a story</em>.</h2>
+      </div>
+      <div>
+        <p class="body-text">
+          Aisha makes confiture — the kind every Moroccan household knows. They came with a simple
+          ask: a product ad. What we made together is closer to a short film, one that
+          <strong>earns its place in a feed</strong> rather than interrupting it.
+        </p>
+        <p class="body-text">
+          The client had a clear sense of what the audience should feel. My job was translating
+          that feeling into a visual language.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec wrap reveal">
+    <div class="label">The process <span class="yaz">ⵣ</span></div>
+    <h2 class="cs-h2">Every frame was <em>a decision</em>.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">№ 01</div>
+        <div class="step-title">Brief &amp; story</div>
+        <div class="step-body">We mapped the narrative together — what the product says, what emotion it carries, and what the audience should feel at the end. The story came before a single frame.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">№ 02</div>
+        <div class="step-title">Voice &amp; tone</div>
+        <div class="step-body">The voiceover wasn't an afterthought. We wrote it as part of the brief — deciding on pace, warmth, and what should be said versus what should be felt.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">№ 03</div>
+        <div class="step-title">3D &amp; motion</div>
+        <div class="step-body">The final piece came to life through cinematic 3D animation — a visual presence no live shoot could reach for the same investment.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THINKING -->
+  <section class="sec wrap reveal">
+    <div class="sec-grid">
+      <div>
+        <div class="label">The thinking <span class="yaz">ⵣ</span></div>
+        <h2 class="cs-h2">Focus is a <em>creative decision</em>.</h2>
+      </div>
+      <div>
+        <p class="body-text">
+          Aisha knew what they wanted: one video, done right. That kind of clarity is rare, and it
+          separates good content from great content. When there's no scope creep, there's nowhere
+          for the quality to hide.
+        </p>
+        <div class="pull">Sometimes the most powerful creative decision is knowing what not to add.</div>
+        <p class="body-text">
+          The result is a product ad that doesn't feel like one. It holds your attention for thirty
+          seconds and leaves you with an impression of the <strong>brand</strong> — not just the product.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILM -->
+  <section class="sec wrap reveal">
+    <div class="label">The film <span class="yaz">ⵣ</span></div>
+    <h2 class="cs-h2">See it <em>for yourself</em>.</h2>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/C3s4QUprjjs?rel=0" allow="fullscreen" allowfullscreen loading="lazy" title="Aisha Confiture — product ad"></iframe>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote-band wrap reveal">
+    <div class="inner">
+      <blockquote>"A product ad should make you <em>feel</em> something before it makes you buy something."</blockquote>
+      <cite>— Iliass Touijri</cite>
+    </div>
+  </div>
+</main>
+
+<!-- END / CTA -->
+<section class="cs-end">
+  <div class="wrap">
+    <div class="end-kicker label" style="color:rgba(242,236,223,0.5)">
+      <span class="k-line"></span>
+      Work together
+    </div>
+    <h2 class="end-title">Have a product and a vision? I'll handle <em>everything in between</em>.</h2>
+    <a href="index.html#contact" class="end-mail">
+      Start a project
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <div class="next-link">
+      <span class="n-label">Next case study</span>
+      <a href="amazigh.html">№ 03 — Amazigh Photoshoot
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-line">
+      <span>Iliass Touijri — AI Creative Director</span>
+      <span>© 2026 · Morocco <span style="color:var(--clay-soft)">ⵣ</span></span>
+    </div>
   </div>
 </section>
-
-<!-- META STRIP -->
-<div class="meta-strip">
-  <div class="meta-item">
-    <div class="meta-label">Client</div>
-    <div class="meta-value">Aisha</div>
-  </div>
-  <div class="meta-item">
-    <div class="meta-label">Type</div>
-    <div class="meta-value">Product Ad</div>
-  </div>
-  <div class="meta-item">
-    <div class="meta-label">Deliverables</div>
-    <div class="meta-value">Film · 3D Animation</div>
-  </div>
-  <div class="meta-item">
-    <div class="meta-label">Format</div>
-    <div class="meta-value">Social · Vertical</div>
-  </div>
-</div>
-
-<!-- BRIEF -->
-<div class="section-sm reveal">
-  <div class="eyebrow">The Brief</div>
-  <h2>They wanted an ad. We built a story.</h2>
-  <p class="body-text">
-    Aisha makes confiture. Good confiture. They came with a simple ask: a product ad. What we created together was something closer to a short film — one that earns its place in a feed rather than interrupting it.
-  </p>
-  <p class="body-text">
-    The client had a clear sense of what they wanted the audience to feel. My job was to translate that feeling into a visual language.
-  </p>
-</div>
-
-<div class="divider"></div>
-
-<!-- PROCESS -->
-<div class="process-section">
-  <div class="inner">
-    <div class="eyebrow reveal">The Process</div>
-    <h2 class="reveal">Every frame was a decision.</h2>
-    <div class="process-steps">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <div class="step-title">Brief & Story</div>
-        <div class="step-body">We mapped the narrative together — what the product says, what emotion it carries, and what the audience should feel at the end. The story came before a single frame was designed.</div>
-      </div>
-      <div class="step reveal reveal-delay-1">
-        <div class="step-num">02</div>
-        <div class="step-title">Voice & Tone</div>
-        <div class="step-body">The voiceover wasn't an afterthought. We wrote it as part of the brief — deciding on the pace, the warmth, and what should be said versus what should be felt.</div>
-      </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step-num">03</div>
-        <div class="step-title">3D & Motion</div>
-        <div class="step-body">The final piece was brought to life through cinematic 3D animation — giving the product a visual presence that no live shoot could have achieved for the same investment.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- QUOTE -->
-<div class="section-sm reveal">
-  <div class="eyebrow">The Thinking</div>
-  <h2>Focus is a creative decision.</h2>
-  <p class="body-text">
-    Aisha knew what they wanted: one video, done right. That kind of clarity is rare, and it's exactly what makes the difference between a good piece of content and a great one. When there's no scope creep, there's nowhere for the quality to hide.
-  </p>
-
-  <div class="highlight-line">
-    Sometimes the most powerful creative decision is knowing what not to add.
-  </div>
-
-  <p class="body-text">
-    The result is a product ad that doesn't feel like one. It earns your attention for thirty seconds and leaves you with an impression of the brand — not just the product. That's the work.
-  </p>
-</div>
-
-<!-- VIDEO -->
-<div class="video-section">
-  <div class="inner">
-    <div class="eyebrow reveal">The Film</div>
-    <h2 class="reveal">See it for yourself.</h2>
-    <div class="video-wrap reveal">
-      <iframe
-        src="https://www.youtube.com/embed/C3s4QUprjjs?rel=0"
-        allow="fullscreen"
-        allowfullscreen
-        loading="lazy"
-        title="Aisha Confiture — Product Ad">
-      </iframe>
-    </div>
-  </div>
-</div>
-
-<!-- PHILOSOPHY -->
-<div class="philosophy">
-  <blockquote class="reveal">
-    "A product ad should make you feel something before it makes you buy something."
-    <cite>— Iliass Touijri</cite>
-  </blockquote>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div class="eyebrow reveal" style="justify-content:center;">Work Together</div>
-  <h2 class="reveal">Have a product.<br>Have a vision.</h2>
-  <p class="cta-sub reveal">
-    Bring both. I'll handle everything in between.
-  </p>
-  <a href="index.html#contact" class="cta-btn reveal">Start a Project</a>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-name">Iliass Touijri</div>
-  <div class="footer-copy">© 2025 · AI Creative Director · Morocco</div>
-</footer>
 
 <script>
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
