@@ -588,7 +588,8 @@
     @media (min-width: 980px) { .contact-grid { grid-template-columns: minmax(0, 1fr) auto; gap: 60px; } }
     .contact-ghost {
       display: none;
-      font-family: var(--sans);
+      font-family: var(--serif);
+      font-style: italic;
       font-size: clamp(180px, 22vw, 340px);
       line-height: 0.9;
       color: rgba(67, 180, 140, 0.14);
@@ -729,7 +730,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">Iliass <em>Touijri</em></a>
-    <div class="nav-mid">AI Creative Studio <span style="color:var(--clay)">ⵣ</span> Morocco</div>
+    <div class="nav-mid">AI Creative Studio</div>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
@@ -745,7 +746,7 @@
       <div class="hero-left">
         <div class="hero-kicker label gsap-fade" id="h-kicker">
           <span class="k-line"></span>
-          AI Creative Director <span class="yaz">ⵣ</span> Morocco
+          AI Creative Director · Morocco
         </div>
         <h1>
           <span class="line"><span>Worlds, made</span></span>
@@ -765,7 +766,7 @@
         </div>
         <figcaption class="portrait-caption">
           <span>Iliass Touijri</span>
-          <span class="yaz">ⵣ</span>
+          
         </figcaption>
       </figure>
     </div>
@@ -924,7 +925,7 @@
     <div class="about-grid">
 
       <div>
-        <div class="label gsap-fade">About <span class="yaz">ⵣ</span> the practice</div>
+        <div class="label gsap-fade">About — the practice</div>
         <blockquote class="about-quote gsap-fade">
           I work where <em>artificial intelligence</em> meets a culture that is
           <em>very much alive</em>.
@@ -970,7 +971,7 @@
         <div class="stat-label">Films delivered</div>
       </div>
       <div class="stat-cell gsap-fade">
-        <div class="stat-num"><em>ⵣ</em></div>
+        <div class="stat-num"><em>MA</em></div>
         <div class="stat-label">Made in Morocco</div>
       </div>
     </div>
@@ -996,7 +997,6 @@
         </a>
         <div class="contact-avail gsap-fade">Open for commissions — worldwide, from Morocco</div>
       </div>
-      <div class="contact-ghost" aria-hidden="true">ⵣ</div>
     </div>
 
     <div class="contact-foot">
@@ -1006,7 +1006,7 @@
         <li><a href="https://www.linkedin.com/in/iliass-touijri-18aa4b361/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         <li><a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a></li>
       </ul>
-      <span>© 2026 · Morocco <span style="color:#43b48c">ⵣ</span></span>
+      <span>© 2026 · Morocco</span>
     </div>
   </div>
 </section>
@@ -1049,7 +1049,7 @@
   ];
   const track = document.getElementById('ticker-track');
   const half = TICKER_ITEMS.map(t =>
-    '<span class="ticker-item"><span class="yaz">ⵣ</span>' + t + '</span>'
+    '<span class="ticker-item"><span class="yaz">·</span>' + t + '</span>'
   ).join('');
   track.innerHTML = half + half;
 
